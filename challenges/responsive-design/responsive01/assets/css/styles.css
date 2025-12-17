@@ -1,0 +1,96 @@
+/*fonts*/
+@font-face {
+    font-family: "OpenSans";
+    src: url(../fonts/Open_Sans/OpenSans-VariableFont_wdth\,wght.ttf);
+}
+
+/*root*/
+:root {
+    --shadow-card: rgb(220,220,220);
+    --text-color-p: rgb(150,150,150);
+    --text-color-title: rgb(50,50,50);
+    --pale-purple:rgb(255,230,255);
+    --purple:rgb(150,0,200);
+    --font-opensans:"OpenSans"; 
+}
+
+
+/*Styles*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-opensans);
+}
+
+
+body {
+    width: 100%;
+    min-width: 375px;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    width: 90%;
+    min-width: 320px;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: 1vh;
+    padding: 1em;
+    box-shadow: 0px 0px 10px 1px var(--shadow-card);
+    border-radius: 10px;    
+}
+
+
+.card__bg {
+    width: 100%;
+    min-width: 300px;
+}
+
+.bg__bg {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.card__span {
+    font-size: 0.8rem;
+    font-weight: bold;
+    background-color: var(--pale-purple);
+    align-self: flex-start;
+    color: var(--purple);
+    padding: 0.5em 1em;
+    border-radius: 50px;
+}
+
+.card__article {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: 0.5dvh;
+
+}
+
+.article__title {
+    color: var(--text-color-title);
+}
+
+.article__p {
+    color: var(--text-color-p);
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.card__autor {
+    border-top: 3px solid var(--shadow-card);
+    padding: 0.5em 0;
+    color: var(--text-color-p);
+    font-weight: bold;
+    font-size: 0.8rem;
+}
