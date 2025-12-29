@@ -27,10 +27,10 @@ const App = () => {
       <main className="main">
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<HomePage countryName={countryName} setCountryName={setCountryName} countryRegion={countryRegion} setCountryRegion={setCountryRegion} countries={countries}/>} />
+            <Route path="/" element={<HomePage countryName={countryName} setCountryName={setCountryName} countryRegion={countryRegion} setCountryRegion={setCountryRegion} countries={countries} />} />
             <Route path="/countries" element={<HomePage countryName={countryName} setCountryName={setCountryName} countryRegion={countryRegion} setCountryRegion={setCountryRegion} countries={countries} />} />
-            <Route path="country/:countryName" element={<CountryPage countries={countries}/>} />
-            <Route path="*" element={<ErrorPage message="Page not found"/>}/>
+            <Route path="country/:countryName" element={<CountryPage countries={countries} />} />
+            <Route path="*" element={<ErrorPage message="Page not found" />} />
           </Routes>
         </BrowserRouter>
       </main>
