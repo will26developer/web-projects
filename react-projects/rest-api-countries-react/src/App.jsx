@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import HeaderComponent from "./components/HeaderComponent";
 import HomePage from "./components/HomePage";
 import CountryPage from "./components/CountryPage";
@@ -25,14 +25,14 @@ const App = () => {
     <>
       <HeaderComponent />
       <main className="main">
-        <BrowserRouter>
+        <HashRouter>
           <Routes>
             <Route path="/" element={<HomePage countryName={countryName} setCountryName={setCountryName} countryRegion={countryRegion} setCountryRegion={setCountryRegion} countries={countries} />} />
             <Route path="/countries" element={<HomePage countryName={countryName} setCountryName={setCountryName} countryRegion={countryRegion} setCountryRegion={setCountryRegion} countries={countries} />} />
             <Route path="country/:countryName" element={<CountryPage countries={countries} />} />
             <Route path="*" element={<ErrorPage message="Page not found" />} />
           </Routes>
-        </BrowserRouter>
+        </HashRouter>
       </main>
     </>
   )
