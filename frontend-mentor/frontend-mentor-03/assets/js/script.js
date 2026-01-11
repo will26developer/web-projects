@@ -22,7 +22,6 @@ window.addEventListener("DOMContentLoaded", () => {
   let countriesData = [];
   const regex = /^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ\s]{3,50}$/;
 
-  // --- Lógica de Persistencia de Tema ---
   const applyTheme = (theme) => {
     if (theme === "dark-mode") {
       body.className = "dark-mode";
@@ -35,7 +34,6 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  // Recuperar tema del localStorage al cargar
   const savedTheme = localStorage.getItem("theme") || "light-mode";
   applyTheme(savedTheme);
 
