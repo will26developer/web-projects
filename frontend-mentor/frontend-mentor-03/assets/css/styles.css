@@ -247,7 +247,7 @@ body {
 .error__back {
     display: flex;
     justify-content: center;
-    gap: 2vw;
+    gap: 1vw;
     padding: 1rem;
     color: var(--text);
     background-color: var(--elements-bg);
