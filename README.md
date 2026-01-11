@@ -87,8 +87,8 @@ All projects are accessible through live demos and direct links.
 [https://will26developer.github.io/web-projects/frontend-mentor/frontend-mentor-08/]
 
 **Dev Challenges**
-[https://will26developer.github.io/challenge/responsive-design/responsive01/]
-[https://will26developer.github.io/challenge/responsive-design/responsive02/]
+[https://will26developer.github.io/challenges/responsive-design/responsive01/]
+[https://will26developer.github.io/challenges/responsive-design/responsive02/]
 
 **React Projects**
 [https://rest-api-countries-react-m8wzlaxi8-will26developers-projects.vercel.app/]

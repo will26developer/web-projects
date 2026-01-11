@@ -3,172 +3,117 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>William | Frontend Architect Portfolio</title>
+    <title>William | Portfolio</title>
     <link rel="stylesheet" href="./assets/css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;500&family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
+    <div class="line-background"></div>
+
     <nav class="navbar">
-        <div class="container flex-nav">
-            <div class="logo">WILL<span>26</span></div>
-            <ul class="nav-links">
-                <li><a href="#philosophy">Philosophy</a></li>
-                <li><a href="#featured">Masterpiece</a></li>
-                <li><a href="#projects">Archive</a></li>
-                <li><a href="https://github.com/will26developer" target="_blank"><i class="fab fa-github"></i> GitHub</a></li>
-            </ul>
+        <div class="container nav-wrapper">
+            <div class="brand">
+                <span class="cursor">_</span> WILL26.DEV
+            </div>
+            <div class="nav-links">
+                <a href="#featured">/featured</a>
+                <a href="#archive">/archive</a>
+                <a href="https://github.com/will26developer" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
         </div>
     </nav>
 
     <header class="hero">
         <div class="container">
-            <span class="badge">Available for New Challenges</span>
-            <h1>Frameworks are <span class="highlight">Tools</span>,<br>Not Crutches.</h1>
-            <p class="hero-sub">
-                Frontend & Full-Stack Developer specializing in <strong>clean architecture</strong> and 
-                high-performance web applications. I build SPAs from scratch to understand what 
-                modern frameworks abstract away.
-            </p>
-            <div class="hero-btns">
-                <a href="#featured" class="btn btn-primary">View Featured Work</a>
-                <a href="#projects" class="btn btn-outline">Explore All Projects</a>
+            <div class="hero-content">
+                <p class="code-comment">// Frontend / Full-Stack Developer</p>
+                <h1>Engineering <span class="gradient-text">Scalable</span> Interfaces</h1>
+                <p class="hero-desc">
+                    Specialized in <strong>clean project architecture</strong> and SPA behavior without blindly relying on frameworks. 
+                    I build tools that demonstrate frameworks are choices, not requirements.
+                </p>
+                <div class="btn-group">
+                    <a href="#featured" class="btn btn-main">View Masterpiece</a>
+                    <a href="#archive" class="btn btn-ghost">Browse Archive</a>
+                </div>
             </div>
         </div>
     </header>
 
-    <section id="philosophy" class="philosophy">
-        <div class="container grid-2">
-            <div class="phi-text">
-                <h2 class="section-title text-left">Project Philosophy</h2>
-                <p>My work isn't just about UI components. It's about demonstrating a framework-agnostic mindset.</p>
-                <ul class="phi-list">
-                    <li><strong>JavaScript Fundamentals:</strong> Deep understanding of ES6+, Async data, and DOM manipulation.</li>
-                    <li><strong>Problem Solving:</strong> Translating complex logic into scalable project architectures.</li>
-                    <li><strong>User Centric:</strong> Prioritizing accessibility, responsiveness, and state management.</li>
-                </ul>
-            </div>
-            <div class="phi-stats">
-                <div class="stat-card">
-                    <h3>10+</h3>
-                    <p>Live Projects Deployed</p>
-                </div>
-                <div class="stat-card">
-                    <h3>Vanilla & React</h3>
-                    <p>Dual Implementation Mastery</p>
+    <section id="featured" class="section">
+        <div class="container">
+            <h2 class="section-label">01. Masterpiece</h2>
+            <div class="master-card">
+                <div class="card-body">
+                    <div class="card-header">
+                        <h3>REST Countries SPA</h3>
+                        <span class="tag">Vanilla JS</span>
+                    </div>
+                    <p>A Single Page Application built entirely with Vanilla JavaScript to demonstrate how SPAs work under the hood.</p>
+                    <ul class="feature-list">
+                        <li>Hash-based routing & Dynamic rendering</li>
+                        <li>API consumption with Async/Await</li>
+                        <li>Manual state handling & DocumentFragment optimization</li>
+                    </ul>
+                    <div class="card-footer">
+                        <a href="https://will26developer.github.io/web-projects/frontend-mentor/frontend-mentor-03/#/" target="_blank" class="btn-link">Live Demo <i class="fas fa-external-link-alt"></i></a>
+                        <a href="https://github.com/will26developer/web-projects/tree/main/frontend-mentor/frontend-mentor-03" target="_blank" class="btn-link">Source Code <i class="fab fa-github"></i></a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="featured" class="featured-section">
+    <section id="archive" class="section">
         <div class="container">
-            <div class="featured-header">
-                <h2 class="section-title">⭐ Featured: REST Countries SPA</h2>
-                <span class="tech-tag">Vanilla JavaScript Masterclass</span>
-            </div>
-            
-            <div class="featured-grid">
-                <div class="featured-content">
-                    <h3>The Challenge</h3>
-                    <p>Building a full-featured SPA without frameworks to prove deep architectural knowledge.</p>
-                    
-                    <div class="tech-specs">
-                        <div class="spec-item">
-                            <i class="fas fa-route"></i>
-                            <span>Hash-based Routing</span>
-                        </div>
-                        <div class="spec-item">
-                            <i class="fas fa-bolt"></i>
-                            <span>DocumentFragment Rendering</span>
-                        </div>
-                        <div class="spec-item">
-                            <i class="fas fa-moon"></i>
-                            <span>Dynamic Theme Engine</span>
-                        </div>
-                    </div>
-
-                    <div class="card-btns">
-                        <a href="https://will26developer.github.io/web-projects/frontend-mentor/frontend-mentor-03/#/" class="btn btn-primary">Live Experience</a>
-                        <a href="https://github.com/will26developer/web-projects/tree/main/frontend-mentor/frontend-mentor-03" class="btn btn-outline">Analyze Code</a>
-                    </div>
-                </div>
-                
-                <div class="comparison-box">
-                    <h4>Why this matters?</h4>
-                    <p>Most developers use React by default. I implemented this twice (Vanilla & React) to understand the overhead and benefits of each approach.</p>
-                    <a href="https://rest-api-countries-react-m8wzlaxi8-will26developers-projects.vercel.app/" class="react-link">View React Version <i class="fas fa-external-link-alt"></i></a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="projects" class="archive">
-        <div class="container">
-            <h2 class="section-title text-center">Project Archive</h2>
-            <div class="project-grid">
+            <h2 class="section-label">02. Project Archive</h2>
+            <div class="archive-grid">
                 
                 <div class="archive-card">
-                    <div class="card-head">
-                        <i class="fas fa-folder"></i>
-                        <span class="count">8 Projects</span>
-                    </div>
-                    <h4>Frontend Mentor Collection</h4>
-                    <p>Intensive UI/UX challenges focused on pixel-perfect layouts and responsive design.</p>
-                    <div class="mini-links">
-                        <a href="https://will26developer.github.io/web-projects/frontend-mentor/frontend-mentor-01/">Challenge #01</a>
-                        <a href="https://will26developer.github.io/web-projects/frontend-mentor/frontend-mentor-08/">Challenge #08</a>
+                    <h4>Frontend Mentor</h4>
+                    <p>UI focused applications with increasing complexity.</p>
+                    <div class="project-links-list">
+                        <a href="https://will26developer.github.io/web-projects/frontend-mentor/frontend-mentor-01/" target="_blank">Challenge 01 <i class="fas fa-link"></i></a>
+                        <a href="https://will26developer.github.io/web-projects/frontend-mentor/frontend-mentor-02/" target="_blank">Challenge 02 <i class="fas fa-link"></i></a>
+                        <a href="https://will26developer.github.io/web-projects/frontend-mentor/frontend-mentor-04/" target="_blank">Challenge 04 <i class="fas fa-link"></i></a>
+                        <a href="https://will26developer.github.io/web-projects/frontend-mentor/frontend-mentor-05/" target="_blank">Challenge 05 <i class="fas fa-link"></i></a>
+                        <a href="https://will26developer.github.io/web-projects/frontend-mentor/frontend-mentor-06/" target="_blank">Challenge 06 <i class="fas fa-link"></i></a>
+                        <a href="https://will26developer.github.io/web-projects/frontend-mentor/frontend-mentor-07/" target="_blank">Challenge 07 <i class="fas fa-link"></i></a>
+                        <a href="https://will26developer.github.io/web-projects/frontend-mentor/frontend-mentor-08/" target="_blank">Challenge 08 <i class="fas fa-link"></i></a>
                     </div>
                 </div>
 
                 <div class="archive-card">
-                    <div class="card-head">
-                        <i class="fas fa-code-branch"></i>
-                        <span class="count">2 Projects</span>
-                    </div>
-                    <h4>DevChallenges.io</h4>
-                    <p>Complex responsive challenges focused on real-world web scenarios.</p>
-                    <div class="mini-links">
-                        <a href="https://will26developer.github.io/challenge/responsive-design/responsive01/">Layout Mastery 01</a>
-                        <a href="https://will26developer.github.io/challenge/responsive-design/responsive02/">Layout Mastery 02</a>
+                    <h4>Dev Challenges</h4>
+                    <p>Responsive design and layout mastery projects.</p>
+                    <div class="project-links-list">
+                        <a href="https://will26developer.github.io/challenges/responsive-design/responsive01/" target="_blank">Responsive 01 <i class="fas fa-link"></i></a>
+                        <a href="https://will26developer.github.io/challenges/responsive-design/responsive02/" target="_blank">Responsive 02 <i class="fas fa-link"></i></a>
                     </div>
                 </div>
 
-            </div>
-        </div>
-    </section>
+                <div class="archive-card highlight-border">
+                    <h4>React Implementations</h4>
+                    <p>Framework-based versions of selected projects.</p>
+                    <div class="project-links-list">
+                        <a href="https://rest-api-countries-react-m8wzlaxi8-will26developers-projects.vercel.app/" target="_blank" class="special-link">REST Countries (React/Vercel) <i class="fas fa-bolt"></i></a>
+                    </div>
+                </div>
 
-    <section class="roadmap">
-        <div class="container">
-            <h2 class="section-title text-center">Next Steps & Vision</h2>
-            <div class="roadmap-grid">
-                <div class="step">
-                    <div class="step-num">01</div>
-                    <p>TypeScript migration for critical SPAs.</p>
-                </div>
-                <div class="step">
-                    <div class="step-num">02</div>
-                    <p>Full-Stack integration (MERN / FARM).</p>
-                </div>
-                <div class="step">
-                    <div class="step-num">03</div>
-                    <p>Automated Testing (Unit & E2E).</p>
-                </div>
             </div>
         </div>
     </section>
 
     <footer class="footer">
-        <div class="container">
-            <div class="footer-wrap">
-                <div class="footer-info">
-                    <p class="name">William</p>
-                    <p class="role">Frontend / Full-Stack Developer | Aspiring AI Engineer</p>
-                </div>
-                <div class="footer-socials">
-                    <a href="https://github.com/will26developer"><i class="fab fa-github"></i></a>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
-                </div>
+        <div class="container footer-content">
+            <div class="footer-info">
+                <p class="footer-name">William</p>
+                <p class="footer-tagline">Frontend / Full-Stack Developer | Aspiring AI Engineer</p>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">© 2026 WILL26.DEV - Built with Vanilla Fundamentals</p>
             </div>
         </div>
     </footer>
