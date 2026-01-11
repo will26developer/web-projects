@@ -1,5 +1,3 @@
-
-
 window.addEventListener("DOMContentLoaded", () => {
   const url = "https://restcountries.com/v3.1/all?fields=name,flags,population,region,capital,subregion,tld,languages,currencies";
   const body = document.querySelector("body");
@@ -40,7 +38,11 @@ window.addEventListener("DOMContentLoaded", () => {
 
   const filterByName = (countries, countryName) => countries.filter(country => country.name.common.toLowerCase().includes(countryName.trim().toLowerCase()));
 
-  const filterByRegion = (countries, region) => countries.filter(country => country.region === region);
+  // Lógica modificada para renderizar todos si la región está vacía
+  const filterByRegion = (countries, region) => {
+    if (!region || region === "") return countries;
+    return countries.filter(country => country.region === region);
+  }
 
   const countryCard = country => {
     const { name, flags, population, region, capital } = country;
@@ -216,4 +218,3 @@ window.addEventListener("DOMContentLoaded", () => {
   initApp()
   window.addEventListener("hashchange", router)
 })
-

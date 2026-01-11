@@ -100,7 +100,6 @@ body {
 
 .form__input {
     width: 100%;
-    /* Dejamos espacio a la derecha para el botón */
     padding: 1.2em 4em 1.2em 2em; 
     color: var(--text);
     border: none;
@@ -116,13 +115,23 @@ body {
     color: var(--text);
     font-size: 1.2rem;
     position: absolute;
-    /* Cambiado de left a right para fijarlo al final */
+    left:80%;
     right: 1.5em; 
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
+.search__region {
+    align-self: flex-start;
+    padding: 1em;
+    background-color: var(--elements-bg);
+    border: none;
+    box-shadow: 0px 0px 10px 1px var(--shadows);
+    color: var(--text);
+}
+
 
 /* Countries Grid */
 .main__countries {
