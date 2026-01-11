@@ -3,6 +3,8 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://will26developer.github.io/web-projects/react-projects/rest-api-countries-react",
+
   "scripts": {
     "dev": "vite",
     "build": "vite build",
