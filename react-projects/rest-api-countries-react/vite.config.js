@@ -4,5 +4,8 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base:"/web-projects/react-projects/rest-api-countries-react/"
+  base:"/web-projects/react-projects/rest-api-countries-react/",
+   build: {
+    outDir: 'build', // antes era 'dist'
+  },
 })
