@@ -22,6 +22,23 @@ window.addEventListener("DOMContentLoaded", () => {
   let countriesData = [];
   const regex = /^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ\s]{3,50}$/;
 
+  // --- Lógica de Persistencia de Tema ---
+  const applyTheme = (theme) => {
+    if (theme === "dark-mode") {
+      body.className = "dark-mode";
+      iconBtn.className = "fa-regular fa-sun";
+      btnSpan.textContent = "Light Mode";
+    } else {
+      body.className = "light-mode";
+      iconBtn.className = "fa-regular fa-moon";
+      btnSpan.textContent = "Dark Mode";
+    }
+  };
+
+  // Recuperar tema del localStorage al cargar
+  const savedTheme = localStorage.getItem("theme") || "light-mode";
+  applyTheme(savedTheme);
+
   const getCountries = async url => {
     try {
       const response = await fetch(url);
@@ -38,7 +55,6 @@ window.addEventListener("DOMContentLoaded", () => {
 
   const filterByName = (countries, countryName) => countries.filter(country => country.name.common.toLowerCase().includes(countryName.trim().toLowerCase()));
 
-  // Lógica modificada para renderizar todos si la región está vacía
   const filterByRegion = (countries, region) => {
     if (!region || region === "") return countries;
     return countries.filter(country => country.region === region);
@@ -194,14 +210,13 @@ window.addEventListener("DOMContentLoaded", () => {
   })
 
   headerBtn.addEventListener("click",() => {
+    // Al cambiar, guardamos la preferencia en localStorage
     if (btnSpan.textContent === "Dark Mode") {
-      iconBtn.className = "fa-regular fa-sun";
-      btnSpan.textContent = "Light Mode"
-      body.className = "dark-mode";
+      applyTheme("dark-mode");
+      localStorage.setItem("theme", "dark-mode");
     } else {
-      iconBtn.className = "fa-regular fa-moon";
-      btnSpan.textContent = "Dark Mode";
-      body.className = "light-mode";
+      applyTheme("light-mode");
+      localStorage.setItem("theme", "light-mode");
     }
   })
 
