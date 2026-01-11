@@ -76,8 +76,22 @@ This repository also includes:
 All projects are accessible through live demos and direct links.
 
 **GitHub Pages index:**
-[https://will26developer.github.io/web-projects/](https://will26developer.github.io/web-projects/)
+**Frontend Mentor Projects**
+[https://will26developer.github.io/web-projects/frontend-mentor/frontend-mentor-01/]
+[https://will26developer.github.io/web-projects/frontend-mentor/frontend-mentor-02/]
+[https://will26developer.github.io/web-projects/frontend-mentor/frontend-mentor-03/]
+[https://will26developer.github.io/web-projects/frontend-mentor/frontend-mentor-04/]
+[https://will26developer.github.io/web-projects/frontend-mentor/frontend-mentor-05/]
+[https://will26developer.github.io/web-projects/frontend-mentor/frontend-mentor-06/]
+[https://will26developer.github.io/web-projects/frontend-mentor/frontend-mentor-07/]
+[https://will26developer.github.io/web-projects/frontend-mentor/frontend-mentor-08/]
 
+**Dev Challenges**
+[https://will26developer.github.io/challenge/responsive-design/responsive01/]
+[https://will26developer.github.io/challenge/responsive-design/responsive02/]
+
+**React Projects**
+[https://rest-api-countries-react-m8wzlaxi8-will26developers-projects.vercel.app/]
 ---
 
 ## 🛠️ Technologies Used
