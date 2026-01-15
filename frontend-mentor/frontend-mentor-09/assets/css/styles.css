@@ -24,9 +24,10 @@
   --purple-700:hsl(261, 51%, 44%);
   --light-blue-400:hsl(189, 59%, 53%);
   --light-blue-500:hsl(194, 58%, 42%);
-  --navy-900:hsl(229, 25%, 31%);
-  --blue-700:hsl(229, 64%, 46%);
+  --navy-900-dark-text:hsl(229, 25%, 31%);
+  --blue-700-score-text:hsl(229, 64%, 46%);
   --gray-600:hsl(246, 11%, 37%);
+  --background:radial-gradient(circle at center, hsl(214, 47%, 23%), hsl(237, 48%, 15%));
   --font-barlow-bold:"BarlowSemiCondensed-Bold";
   --font-barlow-medium:"BarlowSemiCondensed-Medium";
   --font-barlow-light:"BarlowSemiCondesed-Light";
@@ -41,4 +42,15 @@
 
 .hidden {
   display: none !important;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100dvh;
+  min-width: 375px;
+  background-image:var(--background);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
