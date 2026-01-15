@@ -1,42 +1,16 @@
-window.addEventListener("DOMContentLoaded", () => {
-  const playerScore = document.querySelector("#player-score");
-  const houseScore = document.querySelector("#house-score");
-  const optionContainer = document.querySelector("#option-container")
-  const showResults = document.querySelector("#show-results");
-  const showRules = document.querySelector("#show-rules");
-  const btnRules = document.querySelector("#btn-rules");
-  const arrOptions = ["paper","scissors","rock"];
 
-  const housePlayer = () => {
-    return arrOptions[Math.floor(Math.random() * arrOptions.length,2)]
-  }
+window.addEventListener("DOMContentLoaded",() => {
+  const scorePlayer = document.getElementById("score-player");
+  const housePlayer = document.getElementById("house-player");
+  const mainSelect = document.getElementById("select-option");
+  const mainShow = document.getElementById("show-results");
+  const pickedPlayer = document.getElementById("player-picked");
+  const pickedHouse = document.getElementById("house-picked");
+  const winnerMessage = document.getElementById("message");
+  const btnAgain = document.getElementById("btn-again");
+  const showRules = document.getElementById("show-rules");
+  const btnClose = document.getElementById("btn-close");
+  const btnRules = document.getElementById("btn-rules");
 
-  const deliverWinner = (player,house) => {
-    if (player === "rock" && house === "scissors") {
-      return true;
-    }
-    if (player === "scissors" && house === "paper") {
-      return true;
-    }
-
-    if (player === "paper" && house === "rock") {
-      return true
-    }
-
-    if (player === house) {
-      return;
-    }
-    return false;
-  }
-
-  const getWinner = playerPulse => {
-    let house = housePlayer();
-    let player = playerPulse;
-    return deliverWinner(player,house);
-  }
-
-  optionContainer.addEventListener("click", (e) => {
-    let pulsedElement = e.target.closest(".wrap__img");
-    console.log(getWinner(pulsedElement.id));
-  });
-});
+  
+})

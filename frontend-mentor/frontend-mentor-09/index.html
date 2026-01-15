@@ -10,32 +10,63 @@
 </head>
 <body>
   <header class="header">
-    <h1 class="header__title">rock paper scissors</h1>
-    <div class="header__counter">
-      <div class="counter__container">
-        <span class="container__span">player's score</span>
-        <p class="container__p" id="player-score">0</p>
+    <div class="header__logo">
+      <img src="./assets/img/images/logo.svg" alt="icon-logo" class="logo__hero">
+    </div>
+    <div class="header__scores">
+      <div class="score__player">
+        <span class="player__span">player's score</span>
+        <p class="player__p" id="score-player">0</p>
       </div>
-      <div class="counter__container">
-        <span class="container__span">house's score</span>
-        <p class="container__p" id="house-score">0</p>
+      <div class="score__house">
+        <span class="house__span">house's score</span>
+        <p class="house__p" id="score-house">0</p>
       </div>
     </div>
   </header>
   <main class="main">
-    <section class="main__options" id="option-container">
-      <div class="option__wrap">
-        <img src="./assets/img/images/icon-paper.svg" alt="icon-paper" class="wrap__img img-paper" id="paper">
+    <section class="main__select" id="select-option">
+      <div class="select__wrap">
+        <div class="wrap__img">
+          <img src="./assets/img/images/icon-paper.svg" alt="icon-paper" class="img__hero" id="paper">
+        </div>
       </div>
-      <div class="option__wrap">
-        <img src="./assets/img/images/icon-scissors.svg" alt="icon-scissors" class="wrap__img img-scissors" id="scissors">
+      <div class="select__wrap">
+        <div class="wrap__img">
+          <img src="./assets/img/images/icon-scissors.svg" alt="icon-scissors" class="img__hero" id="scissors">
+        </div>
       </div>
-      <div class="option__wrap">
-        <img src="./assets/img/images/icon-rock.svg" alt="icon-rock" class="wrap__img img-rock" id="rock">
+      <div class="select__wrap">
+        <div class="wrap__img">
+          <img src="./assets/img/images/icon-rock.svg" alt="icon-rock" class="img__hero" id="rock">
+        </div>
       </div>
     </section>
-    <section class="main__results hidden" id="show-results"></section>
-    <section class="main__rules hidden" id="show-rules"></section>
+    <section class="main__results hidden" id="show-results">
+      <div class="result__wrap">
+        <div class="wrap__picked">
+          <img src="" alt="picked-player" class="picked__hero" id="player-picked">
+        </div>
+      </div>
+      <div class="result__message">
+        <span class="message__span" id="message"></span>
+        <button type="button" class="message__btn" id="btn-again">play again</button>
+      </div>
+      <div class="result__wrap">
+        <div class="wrap__picked">
+          <img src="" alt="picked-house" class="picked__hero" id="house-picked">
+        </div>
+      </div>
+    </section>
+    <section class="main__rules hidden" id="show-rules">
+      <div class="rules__container">
+        <span class="container__span">rules</span>
+      </div>
+      <button type="button" class="rules__close" id="btn-close">X</button>
+      <div class="rules__illustration">
+        <img src="./assets/img/images/image-rules.svg" alt="illustration-rules" class="illustration__hero">
+      </div>
+    </section>
   </main>
   <footer class="footer">
     <button type="button" class="footer__rules" id="btn-rules">rules</button>
