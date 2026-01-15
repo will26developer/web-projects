@@ -26,34 +26,37 @@
   </header>
   <main class="main">
     <section class="main__select" id="select-option">
-      <div class="select__wrap">
+      <div class="select__wrap"  id="paper">
         <div class="wrap__img">
-          <img src="./assets/img/images/icon-paper.svg" alt="icon-paper" class="img__hero" id="paper">
+          <img src="./assets/img/images/icon-paper.svg" alt="icon-paper" class="img__hero">
         </div>
       </div>
-      <div class="select__wrap">
+      <div class="select__wrap"  id="scissors">
         <div class="wrap__img">
-          <img src="./assets/img/images/icon-scissors.svg" alt="icon-scissors" class="img__hero" id="scissors">
+          <img src="./assets/img/images/icon-scissors.svg" alt="icon-scissors" class="img__hero">
         </div>
       </div>
-      <div class="select__wrap">
+      <div class="select__wrap"  id="rock">
         <div class="wrap__img">
-          <img src="./assets/img/images/icon-rock.svg" alt="icon-rock" class="img__hero" id="rock">
+          <img src="./assets/img/images/icon-rock.svg" alt="icon-rock" class="img__hero" >
         </div>
       </div>
     </section>
     <section class="main__results hidden" id="show-results">
       <div class="result__wrap">
         <div class="wrap__picked">
+          <span class="picked__span">you picked</span>
           <img src="" alt="picked-player" class="picked__hero" id="player-picked">
         </div>
       </div>
       <div class="result__message">
         <span class="message__span" id="message"></span>
         <button type="button" class="message__btn" id="btn-again">play again</button>
+        <button type="button" class="message__btn-reset hidden" id="btn-reset">reset game</button>
       </div>
       <div class="result__wrap">
         <div class="wrap__picked">
+          <span class="picked__span">the house picked</span>
           <img src="" alt="picked-house" class="picked__hero" id="house-picked">
         </div>
       </div>
