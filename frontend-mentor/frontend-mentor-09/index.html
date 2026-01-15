@@ -9,6 +9,36 @@
   <script src="./assets/js/scripts.js"></script>
 </head>
 <body>
-
+  <header class="header">
+    <h1 class="header__title">rock paper scissors</h1>
+    <div class="header__counter">
+      <div class="counter__container">
+        <span class="container__span">player's score</span>
+        <p class="container__p" id="player-score">0</p>
+      </div>
+      <div class="counter__container">
+        <span class="container__span">house's score</span>
+        <p class="container__p" id="house-score">0</p>
+      </div>
+    </div>
+  </header>
+  <main class="main">
+    <section class="main__options" id="option-container">
+      <div class="option__wrap">
+        <img src="./assets/img/images/icon-paper.svg" alt="icon-paper" class="wrap__img img-paper" id="paper">
+      </div>
+      <div class="option__wrap">
+        <img src="./assets/img/images/icon-scissors.svg" alt="icon-scissors" class="wrap__img img-scissors" id="scissors">
+      </div>
+      <div class="option__wrap">
+        <img src="./assets/img/images/icon-rock.svg" alt="icon-rock" class="wrap__img img-rock" id="rock">
+      </div>
+    </section>
+    <section class="main__results hidden" id="show-results"></section>
+    <section class="main__rules hidden" id="show-rules"></section>
+  </main>
+  <footer class="footer">
+    <button type="button" class="footer__rules" id="btn-rules">rules</button>
+  </footer>
 </body>
 </html>
