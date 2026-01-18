@@ -1,0 +1,44 @@
+/*Fonts*/
+@font-face {
+  font-family: "BarlowSemiCondensed-Bold";
+  src: url(../fonts/Barlow_Semi_Condensed/BarlowSemiCondensed-Bold.ttf);
+}
+
+@font-face {
+  font-family: "BarlowSemiCondensed-Medium";
+  src: url(../fonts/Barlow_Semi_Condensed/BarlowSemiCondensed-Medium.ttf);
+}
+
+@font-face {
+  font-family: "BarlowSemiCondensed-Light";
+  src: url(../fonts/Barlow_Semi_Condensed/BarlowSemiCondensed-Light.ttf);
+}
+
+:root {
+  --gold-500: hsl(39, 89%, 49%);
+  --gold-600: hsl(28, 76%, 44%);
+  --blue-500: hsl(230, 89%, 62%);
+  --blue-700: hsl(229, 64%, 46%);
+  --red-600: hsl(349, 71%, 52%);
+  --red-800: hsl(347, 75%, 35%);
+  --purple-700: hsl(261, 73%, 60%);
+  --purple-800: hsl(261, 51%, 44%);
+  --light-blue-400: hsl(189, 59%, 53%);
+  --light-blue-500: hsl(194, 58%, 42%);
+  --navy-900-dark-text: hsl(229, 25%, 31%);
+  --blue-700-score-text: hsl(229, 64%, 46%);
+  --gray-600-header-outline: hsl(246, 11%, 37%);
+  --font-barlow-bold: "BarlowSemiCondensed-Bold";
+  --font-barlow-medium: "BarlowSemiCondensed-Medium";
+  --font-barlow-light: "BarlowSemiCondensed-Light";
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.hidden {
+  display: none !important;
+}
