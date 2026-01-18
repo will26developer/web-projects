@@ -31,6 +31,7 @@
   --font-barlow-bold: "BarlowSemiCondensed-Bold";
   --font-barlow-medium: "BarlowSemiCondensed-Medium";
   --font-barlow-light: "BarlowSemiCondensed-Light";
+  --bg-radial-gradient: radial-gradient( hsl(214, 47%, 23%),hsl(237, 48%, 15%))
 }
 
 * {
@@ -41,4 +42,39 @@
 
 .hidden {
   display: none !important;
+} 
+
+body {
+  width: 100%;
+  height: 100dvh;
+  background-image: var(--bg-radial-gradient);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10dvh;
+  padding: 7rem 2rem;
+  align-items: center;
 }
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 5px solid var(--gray-600-header-outline);
+  border-radius: 10px;
+  padding: 0.5rem;
+  width: 100%;
+  max-width: 700px;
+}
+
+.header__logo {
+  width: 30%;
+  min-width: 70px;
+  max-width: 150px;
+}
+
+.logo__hero {
+  width: 100%;
+  object-fit: cover;
+}
+

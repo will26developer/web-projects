@@ -9,6 +9,8 @@ window.addEventListener("DOMContentLoaded", () => {
     const btnReset = document.getElementById("btn-reset");
     const pickedPlayer = document.getElementById("select-picked-player");
     const pickedHouse = document.getElementById("select-picked-house"); 
+    const pickedWrapPlayer = document.getElementById("picked-wrap-player"); 
+    const pickedWrapHouse = document.getElementById("picked-wrap-house");
     const rulesContainer = document.getElementById("show-rules");
     const btnClose = document.getElementById("btn-close");
     const btnRules = document.getElementById("btn-rules");
@@ -88,8 +90,8 @@ window.addEventListener("DOMContentLoaded", () => {
         pickedHouse.src = `./assets/img/images/icon-${house}.svg`;
         pickedPlayer.alt = `icon-${player}`;
         pickedHouse.alt = `icon-${house}`;
-        pickedPlayer.classList.add(renderStorage[player]);
-        pickedHouse.classList.add(renderStorage[house])
+        pickedWrapPlayer.classList.add(renderStorage[player]);
+        pickedWrapHouse.classList.add(renderStorage[house])
     }
 
     const renderCounters = winner => {
@@ -99,7 +101,6 @@ window.addEventListener("DOMContentLoaded", () => {
         houseScore.textContent = scoreStorage.house;         
     }
 
-    announceWinner();
     initScoreStorage();
 
     pickerContainer.addEventListener("click",e => {
@@ -116,4 +117,6 @@ window.addEventListener("DOMContentLoaded", () => {
     btnRules.addEventListener("click",showRules);
 
     btnClose.addEventListener("click",hideRules);
+
+    announceWinner();
 });
