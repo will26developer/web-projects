@@ -34,21 +34,21 @@
     </header>
     <main class="main">
       <section class="main__select" id="select-container">
-        <div class="select__wrap" id="paper">
+        <div class="select__wrap wrap__blue" id="paper">
           <img
             src="./assets/img/images/icon-paper.svg"
             alt="icon-paper"
             class="wrap__img"
           />
         </div>
-        <div class="select__wrap" id="scissors">
+        <div class="select__wrap wrap__yellow" id="scissors">
           <img
             src="./assets/img/images/icon-scissors.svg"
             alt="icon-scissors"
             class="wrap__img"
           />
         </div>
-        <div class="select__wrap" id="rock">
+        <div class="select__wrap wrap__red" id="rock">
           <img
             src="./assets/img/images/icon-rock.svg"
             alt="icon-rock"
@@ -61,10 +61,11 @@
           <img src="" alt="" class="wrap__img" id="select-picked-player" />
         </div>
         <div class="results__again">
+          <span class="again__message" id="message"></span>
           <button type="button" class="again__btn" id="btn-again">
             play again
           </button>
-          <button type="button" class="again__reset" id="btn-reset">
+          <button type="button" class="again__reset hidden" id="btn-reset">
             new game
           </button>
         </div>
