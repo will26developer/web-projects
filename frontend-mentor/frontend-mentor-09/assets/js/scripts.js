@@ -52,9 +52,7 @@ window.addEventListener("DOMContentLoaded", () => {
         if (playerScoreState >= 13 || houseScoreState >= 13) {
             btnAgain.classList.add("hidden");
             btnReset.classList.remove("hidden");
-            message.textContent = playerScoreState >= 13 && "Player win the game!";
-            message.textContent = houseScoreState >= 13 && "House win the game!";
-            resetGame()
+            message.textContent = playerScoreState >= 13 ? "Player win the game!" : "House win the game!";
         }
     }
 
@@ -109,8 +107,11 @@ window.addEventListener("DOMContentLoaded", () => {
         let  pickHouse = botPlayer();
         let winner = deliverWinner(pickPlayer.id,pickHouse);
         renderWinnerMessage(winner,pickPlayer.id,pickHouse)
-        renderCounters(winner)   
+        renderCounters(winner)
+        announceWinner();   
     })
+
+    btnReset.addEventListener("click",resetGame);
 
     btnAgain.addEventListener("click",returnBack)
 
@@ -118,5 +119,4 @@ window.addEventListener("DOMContentLoaded", () => {
 
     btnClose.addEventListener("click",hideRules);
 
-    announceWinner();
 });
