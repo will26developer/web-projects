@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Frontend Mentor Project 09</title>
+    <link
+      rel="shortcut icon"
+      href="../../../main-projects/frontend-mentor/frontend-mentor-09/assets/img/images/favicon-32x32.png"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="../../../main-projects/frontend-mentor/frontend-mentor-09/assets/css/styles.css" />
+    <script src="../../../main-projects/frontend-mentor/frontend-mentor-09/assets/js/scripts.js"></script>
+  </head>
+
+  <body>
+    <div class="rules__container" id="show-rules">
+      <span class="container__span"> rules </span>
+      <button type="button" class="container__btn" id="btn-close">
+        <img src="../../../main-projects/frontend-mentor/frontend-mentor-09/assets/img/images/icon-close.svg" alt="icon-close" />
+      </button>
+      <div class="container__bg">
+        <img
+          src="../../../main-projects/frontend-mentor/frontend-mentor-09/assets/img/images/image-rules.svg"
+          alt="rules-bg"
+          class="bg__rules"
+        />
+      </div>
+    </div>
+    <header class="header">
+      <div class="header__logo">
+        <img
+          src="../../../main-projects/frontend-mentor/frontend-mentor-09/assets/img/images/logo.svg"
+          alt="logo-rock-scissors-paper"
+          class="logo__hero"
+        />
+      </div>
+      <div class="header__counter">
+        <div class="counter__item">
+          <span class="item__span">player score</span>
+          <p class="item__p" id="player-score">0</p>
+        </div>
+        <div class="counter__item">
+          <span class="item__span">house score</span>
+          <p class="item__p" id="house-score">0</p>
+        </div>
+      </div>
+    </header>
+    <main class="main">
+      <section class="main__select" id="select-container">
+        <div class="select__wrap wrap__blue" id="paper">
+          <img
+            src="../../../main-projects/frontend-mentor/frontend-mentor-09/assets/img/images/icon-paper.svg"
+            alt="icon-paper"
+            class="wrap__img"
+          />
+        </div>
+        <div class="select__wrap wrap__yellow" id="scissors">
+          <img
+            src="../../../main-projects/frontend-mentor/frontend-mentor-09/assets/img/images/icon-scissors.svg"
+            alt="icon-scissors"
+            class="wrap__img"
+          />
+        </div>
+        <div class="select__wrap wrap__red" id="rock">
+          <img
+            src="../../../main-projects/frontend-mentor/frontend-mentor-09/assets/img/images/icon-rock.svg"
+            alt="icon-rock"
+            class="wrap__img"
+          />
+        </div>
+        <img
+          src="../../../main-projects/frontend-mentor/frontend-mentor-09/assets/img/images/bg-triangle.svg"
+          alt="icon-triangle"
+          class="select__bg hidden"
+        />
+      </section>
+      <section class="main__result hidden" id="show-results">
+        <div class="result__wrap" id="picked-wrap-player">
+          <img src="" alt="" class="wrap__img" id="select-picked-player" />
+        </div>
+        <div class="result__again">
+          <span class="again__message" id="message"></span>
+          <button type="button" class="again__btn" id="btn-again">
+            play again
+          </button>
+          <button type="button" class="again__reset hidden" id="btn-reset">
+            new game
+          </button>
+        </div>
+        <div class="result__wrap" id="picked-wrap-house">
+          <img src="" alt="" class="wrap__img" id="select-picked-house" />
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <button type="button" class="footer__btn" id="btn-rules">rules</button>
+    </footer>
+  </body>
+</html>
