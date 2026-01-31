@@ -1,56 +1,46 @@
 const path = require("path");
+const fs = require("fs");
+const {filterByName,filterByRegion,fetchAllCountries} = require("../helpers/apiCountriesHelper");
 
 const mainLandingPage = (req, res) => {
     return res.sendFile(path.join(__dirname, "../statics/main-landing-page/index.html"))
 }
 
-const mainProject01 = (req,res) => {
-    return res.sendFile(path.join(__dirname,"../statics/main-projects/frontend-mentor/frontend-mentor-01/index.html"));
+const mainDinamicProject = (req,res) => {
+    const {project} = req.params;
+    const filePath = path.join(__dirname,`../statics/main-projects/frontend-mentor/frontend-mentor-0${project}/index.html`);
+    if (!fs.existsSync(filePath)) {
+        return res.sendFile(path.join(__dirname,"../statics/error-page/index.html"))
+    }
+    return res.sendFile(filePath);
 }
 
-const mainProject02 = (req,res) => {
-    return res.sendFile(path.join(__dirname,"../statics/main-projects/frontend-mentor/frontend-mentor-02/index.html"));
-}
+const apiRestCountries = async (req,res) => {
+    try {
+        const {name,region} = req.query;
+        let {source, data} = await fetchAllCountries();
+        let result = data; 
+        if (name) result = filterByName(result,name);
+        if (region) result = filterByRegion(result,region);
 
-const mainProject03 = (req,res) => {
-    return res.sendFile(path.join(__dirname,"../statics/main-projects/frontend-mentor/frontend-mentor-03/index.html"));
-}
-
-const mainProject04 = (req,res) => {
-    return res.sendFile(path.join(__dirname,"../statics/main-projects/frontend-mentor/frontend-mentor-04/index.html"));
-}
-
-const mainProject05 = (req,res) => {
-    return res.sendFile(path.join(__dirname,"../statics/main-projects/frontend-mentor/frontend-mentor-05/index.html"));
-}
-
-const mainProject06 = (req,res) => {
-    return res.sendFile(path.join(__dirname,"../statics/main-projects/frontend-mentor/frontend-mentor-06/index.html"));
-}
-
-const mainProject07 = (req,res) => {
-    return res.sendFile(path.join(__dirname,"../statics/main-projects/frontend-mentor/frontend-mentor-07/index.html"));
-}
-
-const mainProject08 = (req,res) => {
-    return res.sendFile(path.join(__dirname,"../statics/main-projects/frontend-mentor/frontend-mentor-08/index.html"));
-}
-
-const mainProject09 = (req,res) => {
-    return res.sendFile(path.join(__dirname,"../statics/main-projects/frontend-mentor/frontend-mentor-09/index.html"));
+        return res.status(200).json({
+            source,
+            count:result.length,
+            data:result
+        })
+    } catch (error) {
+        return res.status(500).json({
+            error:"Failed to fetch countries",
+            message:error.message
+        })
+    }
 }
 
 
 
 module.exports = {
     mainLandingPage,
-    mainProject01,
-    mainProject02,
-    mainProject03,
-    mainProject04,
-    mainProject05,
-    mainProject06,
-    mainProject07,
-    mainProject08,
-    mainProject09,
+    mainDinamicProject,
+    apiRestCountries,
+
 }
