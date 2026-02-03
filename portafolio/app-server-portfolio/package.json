@@ -1,7 +1,7 @@
 {
   "name": "app-server-portfolio",
   "version": "1.0.0",
-  "description": "",
+  "description": "Monolith modular in NodeJs",
   "license": "MIT",
   "author": "will26developer",
   "type": "commonjs",

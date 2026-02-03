@@ -1,15 +1,13 @@
-require("dotenv").config()
+require("dotenv").config();
 const express = require("express");
-const setupMiddlewares = require("./configs/middlewares");
-const setupStatic = require("./configs/static");
-const setupRoutes = require("./configs/routes");
-
+const port = process.env.PORT;
+const setupMiddlewares = require("./configs/middlewares"); 
+const setupStatics = require("./configs/statics"); 
+const setupRoutes = require("./configs/routes"); 
 
 const app = express();
-const port = process.env.PORT;
-
-setupMiddlewares(app);
-setupStatic(app);
+setupMiddlewares(app); 
+setupStatics(app); 
 setupRoutes(app);
 
-app.listen(port,console.log(`Server run on port ${port}`))
+app.listen(port,console.log(`Server run on port: ${port}`))

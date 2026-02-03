@@ -1,18 +1,19 @@
-const path = require("path");
-const webRouter = require("../routes/web-routes/appRoutes");
-const apiRouter = require("../routes/api-routes/apiRoutes");
-
+const webRoutes = require("../routes/webRoutes/webRoutes");
+const errorRoutes = require("../routes/errorRoutes/errorRoute");
+const errorHandler = require("./errorHandler");
+const apiRoutes = require("../routes/apiRoutes/apiRoute");
+ 
 module.exports = (app) => {
-  app.get("/", (req, res) => {
-    res.redirect("/main");
-  });
+    app.use("/main",webRoutes); 
+    app.use("/api",apiRoutes)
+    app.use(errorRoutes);
 
-  app.use("/api", apiRouter);
-  app.use("/main", webRouter);
+    app.use((req, res, next) => {
+        const err = new Error("Route not found");
+        err.statusCode = 404;
+        next(err);
+    });
 
-  app.use((req, res) => {
-    res.status(404).sendFile(
-      path.join(__dirname, "../statics/error-page/index.html")
-    );
-  });
-};
+    app.use(errorHandler);
+
+}
