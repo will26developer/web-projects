@@ -1,157 +1,201 @@
- 🌍 Vanilla JavaScript SPA – Countries Explorer
+```markdown
+# 🌍 Countries Explorer App
 
-A fully functional **Single Page Application (SPA)** built with **pure Vanilla JavaScript**, HTML, and CSS — **no frameworks, no libraries**.
+A fullstack web application built with **Node.js, Express, and Vanilla JavaScript** that consumes the REST Countries API through a custom Backend-for-Frontend (BFF) layer.
 
-This project demonstrates how modern frontend features such as routing, state management, theming, filtering, and dynamic rendering can be implemented **from scratch**, using only the Web Platform.
-
----
-
-## ✨ Features
-
-- ⚡ **Single Page Application** without frameworks
-- 🧭 **Hash-based routing** (`#/country/:name`)
-- 🌗 **Light / Dark mode** using CSS variables
-- 🔍 **Search countries by name** (live filtering)
-- 🌍 **Filter by region**
-- 🧱 **Dynamic component rendering**
-- 🧠 **Centralized state management**
-- 🚀 **Optimized DOM rendering** with `DocumentFragment`
-- ❌ **Error handling & fallback routes**
-- 📱 **Fully responsive layout**
+This project demonstrates clean architecture, server-side filtering, caching strategies, state-driven UI rendering, and SPA-style routing without frontend frameworks.
 
 ---
 
-## 🛠️ Tech Stack
+## 🚀 Features
 
-- **JavaScript (ES6+)**
-- **HTML5**
-- **CSS3** (Flexbox, Media Queries, CSS Variables)
-- **REST Countries API**
-
-> No React, no Vue, no Angular. Just JavaScript.
+- 🔎 Search countries by name  
+- 🌎 Filter countries by region  
+- 📄 Detailed country view  
+- ⚡ Express backend acting as BFF  
+- 🧠 Server-side filtering logic  
+- 🗄 In-memory caching with configurable TTL  
+- 🌗 Light / Dark theme toggle with persistence  
+- 🔁 Hash-based SPA routing  
+- ⏳ Loading overlay spinner  
+- ❌ Dedicated error state view  
+- 🧩 Modular backend architecture  
 
 ---
 
-## 🧠 Architecture Overview
+## 🏗 Architecture
 
-### State Management
+Frontend → Express API (BFF) → REST Countries API
 
-```js
-let countriesData = [];
-const filters = { name: '', region: '' };
+### Backend Responsibilities
+
+- Fetch external API data
+- Cache responses in memory
+- Apply filtering (`name`, `region`)
+- Return structured JSON responses
+
+### Frontend Responsibilities
+
+- Manage UI state
+- Render dynamic views
+- Handle routing via URL hash
+- Display loading and error states
+- Persist theme preference
+
+---
+
+## 📂 Project Structure
+
 ```
 
-- A single source of truth
-- Filters are composable and scalable
-- Rendering is driven by state changes
+portafolio/app-server-portfolio/
+│
+├── controllers/
+│   ├── api-controllers/
+│   └── web-controllers/
+│
+├── services/
+│   └── apiCountriesServices.js
+│
+├── routes/
+│   └── apiRoutes/
+│
+├── configs/
+│
+├── public/
+│   └── frontend-mentor/frontend-mentor-03/
+│       ├── assets/
+│       │   ├── css/
+│       │   └── js/
+│       └── index.html
+│
+├── app.js
+└── package.json
 
----
-
-### Routing
-
-Hash-based routing implemented manually:
-
-```txt
-#/                → Countries list
-#/country/spain   → Country detail view
 ```
 
-The router:
-- Parses the URL
-- Decodes parameters
-- Validates routes
-- Handles 404 states
+---
+
+## 🛠 Technologies Used
+
+### Backend
+- Node.js
+- Express
+- REST Countries API
+- In-memory caching
+- Environment variables
+
+### Frontend
+- Vanilla JavaScript (SPA architecture)
+- HTML5
+- CSS3
+- Hash-based routing
+- State-driven rendering
 
 ---
 
-### Rendering Strategy
+## ⚙️ Installation
 
-- HTML templates are generated with pure functions
-- DOM updates are batched using `DocumentFragment`
-- No unnecessary reflows or repaints
+Clone the repository:
 
----
-
-### Event Handling
-
-- Event delegation for dynamic elements
-- Clean separation between UI logic and rendering
-- Predictable navigation through URL changes
-
----
-
-## 🌗 Theming System
-
-Light and Dark modes are implemented using **CSS custom properties**:
-
-```css
-body.light-mode
-body.dark-mode
 ```
 
-Switching themes only requires toggling a class on `<body>`.
+git clone [https://github.com/will26developer/web-projects.git](https://github.com/will26developer/web-projects.git)
+cd web-projects/portafolio/app-server-portfolio
 
----
-
-## 📦 API
-
-Data is fetched from:
-
-- **REST Countries API**
-
-```txt
-https://restcountries.com/v3.1/all
 ```
 
-Only required fields are requested to reduce payload size.
+Install dependencies:
 
----
-
-## 🚀 Getting Started
-
-### 1. Clone the repository
-
-```bash
-git clone https://github.com/will26developer/web-projects.git
 ```
 
-### 2. Open the project
+npm install
 
-```bash
-cd vanilla-js-countries-spa
 ```
 
-Simply open `index.html` in your browser.
+Create a `.env` file:
 
-> No build step. No dependencies. No setup required.
+```
+
+PORT=3300
+COUNTRIES_CACHE_TTL=600000
+
+```
+
+Start the server:
+
+```
+
+npm start
+
+```
+
+Open in browser:
+
+```
+
+[http://localhost:3300](http://localhost:3300)
+
+```
 
 ---
 
-## 🎯 Project Goals
+## 🔄 API Endpoint
 
-- Understand how SPAs work internally
-- Avoid framework abstraction
-- Master JavaScript, DOM APIs, and browser behavior
-- Build scalable frontend architecture from first principles
+```
+
+GET /api/countries
+
+```
+
+Optional query parameters:
+
+- `name`
+- `region`
+
+Examples:
+
+```
+
+/api/countries?name=spain
+/api/countries?region=Europe
+/api/countries?name=united&region=Americas
+
+```
 
 ---
 
-## 🧪 Possible Improvements
+## 🧠 Caching Strategy
 
-- Add unit tests
-- Improve accessibility (ARIA roles)
-- Normalize search input for edge cases
-- Persist theme preference with `localStorage`
-- Modularize code using ES modules
+The backend uses in-memory caching:
+
+- First request fetches data from the external API
+- Subsequent requests use cached data
+- Cache expires after the configured TTL
+
+This reduces API calls and improves performance.
 
 ---
 
-## 🧑‍💻 Author
+## 📌 Concepts Demonstrated
 
-Built by a JavaScript Engineer in progress, focused on **deep platform knowledge**, not framework dependency.
+- Backend filtering instead of frontend filtering
+- Separation of concerns
+- Modular server architecture
+- Defensive programming practices
+- Loading state management
+- Error state rendering
+- SPA-style navigation without frameworks
+
+---
+
+## 👨‍💻 Author
+
+William
 
 ---
 
 ## 📄 License
 
-This project is open source and available under the **MIT License**.
+MIT
+```
