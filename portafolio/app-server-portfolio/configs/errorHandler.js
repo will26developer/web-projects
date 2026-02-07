@@ -1,18 +1,14 @@
 
-module.exports = (err, req, res, next) => {
-  const statusCode = err.statusCode || 500;
-  const message = err.message || "Internal Server Error";
+module.exports = (err,req,res,next) => {
+    const status = err.statusCode || 500; 
+    const message = err.message || "Unexpected error";
 
-  const isApi = req.originalUrl.startsWith("/api");
+    if (req.originalUrl.startsWith("/api")) {
+        return res.status(status).json({
+            status:status,
+            message:message
+        })
+    }
 
-  if (isApi) {
-    return res.status(statusCode).json({
-      status: "error",
-      message
-    });
-  }
-
-  return res.redirect(
-    `/error?code=${statusCode}&message=${encodeURIComponent(message)}`
-  );
-};
+    return res.status(status).redirect(`/error?code=${status}&message=${encodeURIComponent(message)}`)
+}

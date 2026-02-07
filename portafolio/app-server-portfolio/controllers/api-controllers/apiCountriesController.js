@@ -1,6 +1,6 @@
 const {filterByName,filterByRegion,fetchAllCountries} = require("../../services/apiCountriesServices");
 
-const apiRestCountries = async (req,res) => {
+const apiRestCountries = async (req,res,next) => {
     try {
         const {name,region} = req.query;
         let {source, data} = await fetchAllCountries();
@@ -14,10 +14,7 @@ const apiRestCountries = async (req,res) => {
             data:result
         })
     } catch (error) {
-        return res.status(500).json({
-            error:"Failed to fetch countries",
-            message:error.message
-        })
+        next(error)
     }
 }
 

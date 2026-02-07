@@ -15,14 +15,14 @@
     display: none !important;
 }
 
-body.light-mode {
+body.light-theme {
     --elements-bg: hsl(0, 0%, 100%);
     --bg: hsl(0, 0%, 98%);
-    --shadows: rgba(0, 0, 0, 0.05); /* Sombras más suaves para light mode */
+    --shadows: rgba(0, 0, 0, 0.05);
     --text: hsl(200, 15%, 8%);
 }
 
-body.dark-mode {
+body.dark-theme {
     --elements-bg: hsl(209, 23%, 22%);
     --bg: hsl(207, 26%, 17%);
     --shadows: rgba(0, 0, 0, 0.2);
@@ -45,7 +45,7 @@ body {
     align-items: center;
     width: 100%;
     z-index: 10;
-    position: sticky; /* Mejor que relative para que el header te siga o se quede arriba */
+    position: sticky;
     top: 0;
     box-shadow: 0px 2px 8px var(--shadows);
 }
@@ -74,23 +74,16 @@ body {
     gap: 40px;
 }
 
-.main__search {
+/* 🔥 Antes main__search → ahora main__choice */
+.main__choice {
     display: flex;
     flex-direction: column;
     gap: 40px;
     width: 100%;
 }
 
-/* Search Form */
-.search__form {
-    display: flex;
-    align-items: center;
-    position: relative;
-    max-width: 500px;
-    width: 100%;
-}
-
-.search__form {
+/* 🔥 Antes search__form → ahora choice__form */
+.choice__form {
     display: flex;
     align-items: center;
     position: relative;
@@ -100,7 +93,7 @@ body {
 
 .form__input {
     width: 100%;
-    padding: 1.2em 4em 1.2em 2em; 
+    padding: 1.2em 4em 1.2em 2em;
     color: var(--text);
     border: none;
     border-radius: 5px;
@@ -115,15 +108,15 @@ body {
     color: var(--text);
     font-size: 1.2rem;
     position: absolute;
-    left:80%;
-    right: 1.5em; 
+    right: 1.5em;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.search__region {
+/* 🔥 Antes search__region → ahora id select */
+#select-region {
     align-self: flex-start;
     padding: 1em;
     background-color: var(--elements-bg);
@@ -131,7 +124,6 @@ body {
     box-shadow: 0px 0px 10px 1px var(--shadows);
     color: var(--text);
 }
-
 
 /* Countries Grid */
 .main__countries {
@@ -143,7 +135,8 @@ body {
     margin: 0 auto;
 }
 
-.country__card {
+/* 🔥 Antes country__card → ahora countries__card */
+.countries__card {
     background-color: var(--elements-bg);
     border-radius: 8px;
     overflow: hidden;
@@ -152,7 +145,7 @@ body {
     transition: transform 0.2s ease;
 }
 
-.country__card:hover {
+.countries__card:hover {
     transform: translateY(-5px);
 }
 
@@ -167,7 +160,8 @@ body {
     display: block;
 }
 
-.card__description {
+/* 🔥 Antes card__description → ahora card__info */
+.card__info {
     padding: 1.5em;
     color: var(--text);
     display: flex;
@@ -175,13 +169,13 @@ body {
     gap: 8px;
 }
 
-.card__description h2 {
+.card__info h2 {
     margin-bottom: 8px;
     font-size: 1.2rem;
 }
 
-/* Country Detail View */
-.main__country {
+/* 🔥 Antes main__country → ahora main__details */
+.main__details {
     display: flex;
     flex-direction: column;
     gap: 40px;
@@ -204,7 +198,8 @@ body {
     box-shadow: 0px 0px 10px var(--shadows);
 }
 
-.country__detail {
+/* 🔥 Antes country__detail → ahora details__container */
+.details__container {
     display: flex;
     flex-direction: column;
     gap: 40px;
@@ -255,8 +250,38 @@ body {
     border: none;
 }
 
+/* Loading Overlay */
+
+.loading-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(3px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.spinner {
+    width: 60px;
+    height: 60px;
+    border: 6px solid var(--elements-bg);
+    border-top: 6px solid var(--text);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
 /* Media Queries */
 @media (min-width: 1024px) {
+
     .header {
         padding: 1.5em 5%;
     }
@@ -265,19 +290,20 @@ body {
         padding: 3em 5%;
     }
 
-    .main__search {
+    .main__choice {
         flex-direction: row;
         justify-content: space-between;
     }
 
-    .country__detail {
+    .details__container {
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
         gap: 80px;
     }
 
-    .detail__flag, .detail__container {
+    .detail__flag,
+    .detail__container {
         flex: 1;
     }
 
@@ -290,9 +316,5 @@ body {
     .container__title {
         width: 100%;
         font-size: 2rem;
-    }
-
-    .container__item {
-        margin-top: 0; /* Eliminado el margen negativo */
     }
 }

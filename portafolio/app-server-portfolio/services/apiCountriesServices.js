@@ -1,14 +1,13 @@
-let countriesCache = null; 
+let countriesCache = null;
 let cacheTimeStamp = null;
 let CACHE_TTL = Number(process.env.COUNTRIES_CACHE_TTL) || 10 * 60 * 1000;
 
-const filterByName = (array,countryName) => array.filter(country => country.name.common.toLowerCase().includes(countryName.toLowerCase()));
+const filterByName = (array, name) => array.filter(country => country.name.common.toLowerCase().includes(name.toLowerCase()));
 
-const filterByRegion = (array,countryRegion) => array.filter(country => country.region === countryRegion);
+const filterByRegion = (array, region) => array.filter(country => country.region === region);
 
 const fetchAllCountries = async () => {
     try {
-
         if (countriesCache && Date.now() - cacheTimeStamp < CACHE_TTL) {
             return {
                 source: "cache",
@@ -20,12 +19,12 @@ const fetchAllCountries = async () => {
         countriesCache = data;
         cacheTimeStamp = Date.now();
         return {
-            source:"api",
+            source: "api",
             data
-        } 
+        }
     } catch (error) {
-        console.error("Error:",error);
-        throw error; 
+        console.log("Error:", error);
+        throw error;
     }
 }
 

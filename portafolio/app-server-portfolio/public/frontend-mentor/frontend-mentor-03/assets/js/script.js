@@ -1,233 +1,273 @@
+
 window.addEventListener("DOMContentLoaded", () => {
-  const url = "https://restcountries.com/v3.1/all?fields=name,flags,population,region,capital,subregion,tld,languages,currencies";
-  const body = document.querySelector("body");
-  const headerBtn = document.querySelector(".header__btn");
-  const iconBtn = document.querySelector(".fa-regular");
-  const btnSpan = document.querySelector(".btn__span");
-  const mainSearch = document.querySelector(".main__search");
-  const searchForm = document.querySelector(".search__form");
-  const formInput = document.querySelector(".form__input");
-  const searchRegion = document.querySelector(".search__region");
-  const mainCountries = document.querySelector(".main__countries");
-  const mainCountry = document.querySelector(".main__country");
-  const btnBack = document.querySelector(".btn__back");
-  const countryDetail = document.querySelector(".country__detail");
-  const mainError = document.querySelector(".main__error");
-  const errorMessage = document.querySelector(".error__p")
-  const errorBack = document.querySelector(".error__back");
-  const filters = {
-    name: "",
-    region: ""
-  }
-  let countriesData = [];
-  const regex = /^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ\s]{3,50}$/;
+    //DOM elements
+    const elements = {
+        bodyBg: document.getElementById("body-bg"),
+        themeBtn: document.getElementById("theme-btn"),
+        themeIcon: document.getElementById("theme-icon"),
+        themeText: document.getElementById("theme-text"),
+        choiceContainer: document.getElementById("container-choice"),
+        inputCountry: document.getElementById("input-country"),
+        selectRegion: document.getElementById("select-region"),
+        countriesContainer: document.getElementById("countries-container"),
+        countryDetails: document.getElementById("country-details"),
+        btnBack: document.getElementById("btn-back"),
+        detailsContainer: document.getElementById("details-container"),
+        errorContainer: document.getElementById("error-container"),
+        btnErrorBack: document.getElementById("btn-error-back"),
+        errorMessage: document.getElementById("error-message"),
+        loadingSpinner: document.getElementById("loading-spinner"),
 
-  const applyTheme = (theme) => {
-    if (theme === "dark-mode") {
-      body.className = "dark-mode";
-      iconBtn.className = "fa-regular fa-sun";
-      btnSpan.textContent = "Light Mode";
-    } else {
-      body.className = "light-mode";
-      iconBtn.className = "fa-regular fa-moon";
-      btnSpan.textContent = "Dark Mode";
-    }
-  };
-
-  const savedTheme = localStorage.getItem("theme") || "light-mode";
-  applyTheme(savedTheme);
-
-  const getCountries = async url => {
-    try {
-      const response = await fetch(url);
-      const data = await response.json();
-      return data;
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  }
-
-  const hashParam = param => encodeURIComponent(param);
-
-  const validCountry = (regex, name) => regex.test(name);
-
-  const filterByName = (countries, countryName) => countries.filter(country => country.name.common.toLowerCase().includes(countryName.trim().toLowerCase()));
-
-  const filterByRegion = (countries, region) => {
-    if (!region || region === "") return countries;
-    return countries.filter(country => country.region === region);
-  }
-
-  const countryCard = country => {
-    const { name, flags, population, region, capital } = country;
-    return `
-      <div class="card__flag">
-        <img src=${flags.png} alt=${flags.alt} class="flag__bg">
-      </div>
-      <div class="card__description">
-        <h3 class="description__title">${name.common}</h3>
-        <p class="description__p"><strong class="p__strong">Population:</strong> ${population}</p>
-        <p class="description__p"><strong class="p__strong">Region:</strong> ${region}</p>
-        <p class="description__p"><strong class="p__strong">Capital:</strong> ${capital}</p>
-      </div>
-    `
-  }
-
-  const countryDetailInfo = country => {
-    const { name, flags, population, region, subregion, capital, tld, languages, currencies } = country;
-    let nativeName = Object.values(name.nativeName)[0].common || name.common;
-    let tlDomain = Object.values(tld).join(", ");
-    let language = Object.values(languages).join(", ");
-    let currencie = Object.values(currencies)[0].name;
-    return `
-       <div class="detail__flag">
-         <img src=${flags.png} alt=${flags.alt} class="flag__detail">
-       </div>
-       <div class="detail__container">
-         <h1 class="container__title">${name.common}</h1>
-         <div class="container__item">
-           <p class="item__p"><strong class="p__strong">Native Name: </strong>${nativeName}</p>
-           <p class="item__p"><strong class="p__strong">Population: </strong>${population}</p>
-           <p class="item__p"><strong class="p__strong">Region: </strong>${region}</p>
-           <p class="item__p"><strong class="p__strong">Sub Region: </strong>${subregion}</p>
-           <p class="item__p"><strong class="p__strong">Capital: </strong>${capital}</p>
-         </div>
-         <div class="container__item">
-           <p class="item__p"><strong class="p__strong">Top Level Domain: </strong>${tlDomain}</p>
-           <p class="item__p"><strong class="p__strong">Currencies: </strong>${currencie}</p>
-           <p class="item__p"><strong class="p__strong">Languages: </strong>${language}</p>
-         </div>
-       </div>
-    `
-  }
-
-  const renderCountry = countryInfo => {
-    mainSearch.classList.add("hidden");
-    mainCountries.classList.add("hidden");
-    mainCountry.classList.remove("hidden");
-    countryDetail.innerHTML = "";
-    countryDetail.innerHTML = countryDetailInfo(countryInfo);
-  }
-
-  const renderCountries = arrayCountries => {
-    mainCountries.classList.remove("hidden");
-    mainCountry.classList.add("hidden");
-    mainCountries.innerHTML = "";
-    const fragment = document.createDocumentFragment();
-
-    arrayCountries.forEach(country => {
-      const article = document.createElement("article");
-      article.className = "country__card";
-      article.id = `${country.name.common}`;
-      article.innerHTML = countryCard(country);
-      fragment.append(article);
-    })
-
-    mainCountries.append(fragment);
-  }
-
-  const renderError = message => {
-    mainCountries.classList.add("hidden");
-    mainCountry.classList.add("hidden")
-    mainSearch.classList.add("hidden")
-    mainError.classList.remove("hidden")
-    errorMessage.textContent = message;
-  }
-
-  const hideError = () => {
-    errorMessage.textContent = "";
-    mainError.classList.add("hidden");
-    mainCountries.classList.remove("hidden");
-    mainSearch.classList.remove("hidden");
-  }
-
-  const applyFilters = () => {
-    let results = countriesData;
-
-    if (filters.name) {
-      results = filterByName(results, filters.name);
     }
 
-    if (filters.region) {
-      results = filterByRegion(results, filters.region);
+    //Global state 
+    const state = {
+        filter: {
+            name: "",
+            region: ""
+        },
+        countriesData: [],
+        loading: false,
+        error: false,
+        theme: "light-theme"
     }
 
-    renderCountries(results);
-  }
+    //Validate country name
+    const validCountryName = name => /^[A-Za-zÀ-ÿ\s]{2,60}$/.test(name);
 
-  const router = () => {
-    const [route, domain, subdomain] = location.hash.split("/");
-    if (route && domain === "country" && subdomain) {
-      let decodedSubdomain = decodeURIComponent(subdomain);
-      let countryInfo = countriesData.find(country => country.name.common.toLowerCase() === decodedSubdomain.trim().toLowerCase());
-      if (countryInfo) {
-        renderCountry(countryInfo);
-      } else {
-        renderError("Country not found, the country you are looking for does not exist.")
-      }
-    } else if (route || (route && domain === "countries")) {
-      applyFilters();
-    }  else {
-      renderError("Invalid route, the URL you entered is not valid.");
+    //Fetching Countries
+    const fetchCountries = async () => {
+        let { name, region } = state.filter;
+        let param = new URLSearchParams();
+        if (name && validCountryName(name)) param.append("name", name);
+        if (region) param.append("region", region);
+        let query = param.toString();
+
+        try {
+            state.loading = true;
+            state.error = false;
+            showLoading();
+            const response = await fetch(`http://localhost:3300/api/countries?${query}`);
+            const data = await response.json();
+            state.countriesData = data.data;
+            state.loading = false;
+            return state.countriesData;
+        } catch (error) {
+            console.log("Error:", error);
+            state.loading = false;
+            state.error = true;
+            return null;
+        } finally {
+            state.loading = false;
+            hideLoading();
+        }
     }
-  }
 
-  searchForm.addEventListener("submit", e => {
-    e.preventDefault();
-    let valueName = formInput.value;
-    if (validCountry(regex, valueName)) {
-      filters.name = valueName;
-      applyFilters();
+    //Render
+    const renderCountriesView = async () => {
+        elements.countriesContainer.innerHTML = "";
+        let data = await fetchCountries()
+        if (!Array.isArray(data)) {
+            elements.countriesContainer.innerHTML = "<p>No results</p>";
+            return;
+        }
+
+        const fragment = document.createDocumentFragment();
+        data.forEach(({ name, flags, population, region, capital }) => {
+            const article = document.createElement("article");
+            article.className = "countries__card";
+            article.id = name.common;
+            article.innerHTML = `
+              <div class="card__flag">
+                <img src=${flags.png} alt=${flags.alt} class="flag__bg">
+              </div>
+              <div class="card__info">
+                <h3 class="">${name.common}</h3>
+                <p><strong>Population:</strong>${population}</p>
+                <p><strong>Region:</strong>${region}</p>
+                <p><strong>Capital:</strong>${capital}</p>
+              </div>
+            `
+            fragment.append(article);
+        })
+        elements.countriesContainer.append(fragment);
     }
-  })
 
-  formInput.addEventListener("input", e => {
-    let valueName = e.target.value;
-    if (validCountry(regex, valueName)) {
-      filters.name = valueName;
-      applyFilters()
+    const renderCountryDetailView = async () => {
+        elements.detailsContainer.innerHTML = "";
+        let data = await fetchCountries();
+        if (!Array.isArray(data)) {
+            elements.detailsContainer.innerHTML = "<p>No results</p>";
+            return;
+        }
+        let { name, flags, population, region, subregion, capital, tld, languages, currencies } = data[0];
+        let nativeName = Object.values(name.nativeName)[0].common || name.common;
+        let tlDomain = Object.values(tld).join(", ");
+        let language = Object.values(languages).join(", ");
+        let currencie = Object.values(currencies)[0].name;
+        elements.detailsContainer.innerHTML = `
+            <div class="detail__flag">
+              <img src=${flags.png} alt=${flags.alt} class="flag__detail">
+            </div>
+            <div class="detail__container">
+              <h1 class="container__title">${name.common}</h1>
+              <div class="container__item">
+                <p class="item__p"><strong class="p__strong">Native Name: </strong>${nativeName}</p>
+                <p class="item__p"><strong class="p__strong">Population: </strong>${population}</p>
+                <p class="item__p"><strong class="p__strong">Region: </strong>${region}</p>
+                <p class="item__p"><strong class="p__strong">Sub Region: </strong>${subregion}</p>
+                <p class="item__p"><strong class="p__strong">Capital: </strong>${capital}</p>
+              </div>
+              <div class="container__item">
+                <p class="item__p"><strong class="p__strong">Top Level Domain: </strong>${tlDomain}</p>
+                <p class="item__p"><strong class="p__strong">Currencies: </strong>${currencie}</p>
+                <p class="item__p"><strong class="p__strong">Languages: </strong>${language}</p>
+              </div>
+            </div>
+          `
     }
-  })
 
-  searchRegion.addEventListener("change", e => {
-    filters.region = e.target.value;
-    applyFilters()
-  })
+    const renderViewError = message => elements.errorMessage.textContent = message;
 
-  mainCountries.addEventListener("click", e => {
-    let element = e.target.closest(".country__card");
-    if (!element) return;
-    location.hash = `/country/${hashParam(element.id)}`;
-  })
+    //Views 
+    const countriesView = {
+        mount: async () => {
+            elements.choiceContainer.classList.remove("hidden");
+            elements.countriesContainer.classList.remove("hidden");
+            elements.countryDetails.classList.add("hidden");
+            await renderCountriesView()
+        },
+        unmount: () => {
+            elements.choiceContainer.classList.add("hidden");
+            elements.countriesContainer.classList.add("hidden");
+            elements.countryDetails.classList.remove("hidden")
+            state.filter.name = "";
+            state.filter.region = "";
+        }
+    };
 
-  btnBack.addEventListener("click",() => {
-    mainCountry.classList.add("hidden");
-    mainSearch.classList.remove("hidden");
-    mainCountries.classList.remove("hidden");
-    location.hash = "#/";
-  })
-
-  headerBtn.addEventListener("click",() => {
-    // Al cambiar, guardamos la preferencia en localStorage
-    if (btnSpan.textContent === "Dark Mode") {
-      applyTheme("dark-mode");
-      localStorage.setItem("theme", "dark-mode");
-    } else {
-      applyTheme("light-mode");
-      localStorage.setItem("theme", "light-mode");
+    const countryDetailView = {
+        mount: () => {
+            elements.countryDetails.classList.remove("hidden");
+            elements.countriesContainer.classList.add("hidden");
+            elements.choiceContainer.classList.add("hidden");
+            renderCountryDetailView()
+        },
+        unmount: () => {
+            elements.countryDetails.classList.add("hidden");
+            elements.countriesContainer.classList.remove("hidden");
+            elements.choiceContainer.classList.remove("hidden");
+            state.filter.name = "";
+        }
     }
-  })
 
-  errorBack.addEventListener("click", () => {
-    location.hash = "#/";
-    hideError();
-  })
+    const errorView = {
+        mount: () => {
+            elements.choiceContainer.classList.add("hidden");
+            elements.countriesContainer.classList.add("hidden");
+            elements.countryDetails.classList.contains("hidden") && elements.countryDetails.classList.add("hidden");
+            elements.errorContainer.classList.remove("hidden");
+            renderViewError("Invalid route, the URL you entered is not valid.")
+        },
+        unmount: () => {
+            elements.choiceContainer.classList.remove("hidden");
+            elements.countriesContainer.classList.remove("hidden");
+            elements.countryDetails.classList.contains("hidden") && elements.countryDetails.classList.add("hidden");
+            elements.errorContainer.classList.add("hidden");
+        }
+    }
 
-  const initApp = async () => {
-    countriesData = await getCountries(url);
-    router();
-  }
+    //listeners functions
+    let timeoutId;
+    const listenersFunctions = {
+        handleInput: e => {
+            clearTimeout(timeoutId);
+            timeoutId = setTimeout(() => {
+                state.filter.name = e.target.value;
+                renderCountriesView()
+            }, 500)
+        },
+        handleSelect: e => {
+            state.filter.region = e.target.value;
+            renderCountriesView()
+        },
+        handleTheme: e => {
+            if (state.theme === "light-theme") {
+                state.theme = "dark-theme";
+                elements.themeIcon.className = "fa-regular fa-sun";
+                elements.themeText.textContent = "Light Mode";
+                elements.bodyBg.className = state.theme;
+                localStorage.setItem("theme", JSON.stringify({ theme: state.theme }));
+            } else {
+                state.theme = "light-theme";
+                elements.themeIcon.className = "fa-regular fa-moon";
+                elements.themeText.textContent = "Dark Mode";
+                elements.bodyBg.className = state.theme;
+                localStorage.setItem("theme", JSON.stringify({ theme: state.theme }));
+            }
+        },
+        handleClickCard: e => {
+            const element = e.target.closest(".countries__card");
+            if (!element) return;
+            state.filter.name = element.id;
+            location.hash = `/country/${encodeURIComponent(element.id)}`;
+        },
+        returnBack: e => {
+            elements.countryDetails.classList.add("hidden");
+            elements.countriesContainer.classList.remove("hidden");
+            elements.choiceContainer.classList.remove("hidden");
+            location.hash = "/countries"
+        },
+        errorComeBack: e => {
+            errorView.unmount();
+            location.hash = "/countries";
+        }
+    }
 
-  initApp()
-  window.addEventListener("hashchange", router)
+    //Listener for elements
+    const initListeners = () => {
+        elements.themeBtn.addEventListener("click", listenersFunctions.handleTheme);
+        elements.btnBack.addEventListener("click", listenersFunctions.returnBack);
+        elements.inputCountry.addEventListener("input", listenersFunctions.handleInput);
+        elements.selectRegion.addEventListener("change", listenersFunctions.handleSelect);
+        elements.countriesContainer.addEventListener("click", listenersFunctions.handleClickCard);
+        elements.btnErrorBack.addEventListener("click", listenersFunctions.errorComeBack);
+    }
+
+    const showLoading = () => {
+        elements.loadingSpinner.classList.remove("hidden");
+    };
+
+    const hideLoading = () => {
+        elements.loadingSpinner.classList.add("hidden");
+    };
+
+
+    /*Init in app */
+    //Initialize theme function
+    const initializeThemeStorage = () => localStorage.setItem("theme", JSON.stringify({ theme: state.theme }));
+    //Router
+    const router = () => {
+        const [, route, param] = location.hash.split("/");
+        countriesView.unmount();
+        countryDetailView.unmount();
+        errorView.unmount();
+        if (route === "" || route === "countries") {
+            countriesView.mount()
+        } else if (route === "country" && param) {
+            state.filter.name = decodeURIComponent(param);
+            countryDetailView.mount();
+        } else {
+            errorView.mount()
+        }
+    }
+
+    const initApp = () => {
+        initializeThemeStorage();
+        initListeners()
+        router();
+        window.addEventListener("hashchange", router);
+    }
+    initApp();
+
 })
