@@ -1,7 +1,7 @@
 {
   "name": "app-server-portfolio",
   "version": "1.0.0",
-  "description": "",
+  "description": "App Server Portfolio",
   "license": "MIT",
   "author": "will26developer",
   "type": "commonjs",
@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "cors": "^2.8.6",
-    "dotenv": "^17.2.3",
+    "dotenv": "^17.3.1",
     "express": "^5.2.1"
   },
   "devDependencies": {
