@@ -34,6 +34,7 @@ body {
     color: var(--text);
     min-height: 100vh;
     width: 100%;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Header */
@@ -45,9 +46,10 @@ body {
     align-items: center;
     width: 100%;
     z-index: 10;
-    position: sticky; /* Mejor que relative para que el header te siga o se quede arriba */
+    position: sticky;
     top: 0;
     box-shadow: 0px 2px 8px var(--shadows);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .header__title {
@@ -64,6 +66,7 @@ body {
     align-items: center;
     gap: 10px;
     cursor: pointer;
+    transition: color 0.3s ease;
 }
 
 /* Main Container */
@@ -90,14 +93,6 @@ body {
     width: 100%;
 }
 
-.search__form {
-    display: flex;
-    align-items: center;
-    position: relative;
-    max-width: 500px;
-    width: 100%;
-}
-
 .form__input {
     width: 100%;
     padding: 1.2em 4em 1.2em 2em; 
@@ -107,6 +102,7 @@ body {
     box-shadow: 0px 2px 10px var(--shadows);
     outline: none;
     background-color: var(--elements-bg);
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .form__btn {
@@ -121,6 +117,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: color 0.3s ease;
 }
 
 .search__region {
@@ -130,6 +127,7 @@ body {
     border: none;
     box-shadow: 0px 0px 10px 1px var(--shadows);
     color: var(--text);
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
 }
 
 
@@ -149,7 +147,7 @@ body {
     overflow: hidden;
     box-shadow: 0px 4px 12px var(--shadows);
     text-decoration: none;
-    transition: transform 0.2s ease;
+    transition: transform 0.2s ease, background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .country__card:hover {
@@ -173,6 +171,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 8px;
+    transition: color 0.3s ease;
 }
 
 .card__description h2 {
@@ -202,6 +201,7 @@ body {
     gap: 10px;
     cursor: pointer;
     box-shadow: 0px 0px 10px var(--shadows);
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .country__detail {
@@ -218,6 +218,7 @@ body {
     width: 100%;
     height: auto;
     box-shadow: 0px 0px 15px var(--shadows);
+    transition: box-shadow 0.3s ease;
 }
 
 .detail__container {
@@ -242,6 +243,7 @@ body {
     color: var(--text);
     text-align: center;
     gap: 20px;
+    transition: color 0.3s ease;
 }
 
 .error__back {
@@ -253,6 +255,7 @@ body {
     background-color: var(--elements-bg);
     box-shadow: 0px 0px 10px 1px var(--shadows);
     border: none;
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* Media Queries */
@@ -293,6 +296,6 @@ body {
     }
 
     .container__item {
-        margin-top: 0; /* Eliminado el margen negativo */
+        margin-top: 0;
     }
 }
