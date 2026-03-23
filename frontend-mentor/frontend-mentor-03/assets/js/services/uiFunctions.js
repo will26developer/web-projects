@@ -59,7 +59,7 @@ const uiFunctions = {
     backToCountries: () => {
         location.hash = "#/countries";
         countryDetailView.unmount();
-        errorView
+        errorView.unmount();
         countriesView.mount(); 
     }
 }
