@@ -1,6 +1,12 @@
 import state from "../state/state.js";
 import elements from "../elements/domElements.js";
 import countriesViewTemplate from "../templates/countriesViewTemplate.js";
+import utilFunctions from "./utilFunctions.js";
+import countryViewTemplate from "../templates/countryViewTemplate.js";
+import countryDetailView from "../components/countryDetailView.js";
+import countriesView from "../components/countriesView.js";
+import errorView from "../components/errorView.js";
+
 const uiFunctions = {
     setDefaultTheme: () => {
         state.theme = "light-mode";
@@ -27,7 +33,6 @@ const uiFunctions = {
     },
     renderCountries: () => {
         if (state.countries.length > 0) {
-            console.log(state.countries)
             elements.countriesModule.innerHTML = "";
             const fragment = document.createDocumentFragment();
             state.countries.forEach(country => {
@@ -39,6 +44,23 @@ const uiFunctions = {
             })
             elements.countriesModule.append(fragment);
         }
+    },
+    renderDetailCountry: (countryName) => {
+        state.filters.name = countryName; 
+        utilFunctions.filterCountries(state.filters.name, state.filters.region);
+        elements.detailModule.innerHTML = ""; 
+        if (state.countries.length > 0) {
+            const country = state.countries[0]; 
+            elements.detailModule.innerHTML = countryViewTemplate(country);
+        } else {
+            elements.detailModule.innerHTML = "<p class='error__message'>Country not found</p>";
+        }
+    },
+    backToCountries: () => {
+        location.hash = "#/countries";
+        countryDetailView.unmount();
+        errorView
+        countriesView.mount(); 
     }
 }
 

@@ -1,5 +1,4 @@
 import state from "../state/state.js";
-import uiFunctions from "./uiFunctions.js";
 
 const utilFunctions = {
     getApiData: async () => {
@@ -23,8 +22,12 @@ const utilFunctions = {
             filterCountries = filterCountries.filter(country => country.region === region);
         }
         state.countries = filterCountries;
-        uiFunctions.renderCountries()
     },
+    cleanFilters: () => {
+        state.filters.name = "";
+        state.filters.region = ""; 
+        state.countries = state.allCountries;
+    }
 }
 
 export default utilFunctions;

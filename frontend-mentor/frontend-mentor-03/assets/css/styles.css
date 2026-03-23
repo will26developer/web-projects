@@ -216,6 +216,7 @@ body {
 
 .flag__detail {
     width: 100%;
+    object-fit: cover;
     height: auto;
     box-shadow: 0px 0px 15px var(--shadows);
     transition: box-shadow 0.3s ease;

@@ -9,8 +9,9 @@ const router = () => {
     errorView.unmount();
     if (route === "" || route === "countries" && param == undefined)  {
         countriesView.mount();
-    } else if (route == "country" && param) {
-        countryDetailView.mount();
+    } else if (route == "country" && param) { 
+        let countryName = decodeURIComponent(param);
+        countryDetailView.mount(countryName);
     } else {
         errorView.mount();
     }
