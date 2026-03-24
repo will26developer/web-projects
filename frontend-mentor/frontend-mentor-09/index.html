@@ -7,21 +7,19 @@
   <title>Frontend Mentor Project 09</title>
   <link rel="stylesheet" href="./assets/css/styles.css">
   <link rel="shortcut icon" href="./assets/img/images/favicon.ico" type="image/x-icon">
-  <script type="module" src="./assets/js/scripts.js"></script>
+  <script type="module" src="./assets/js/app.js"></script>
 </head>
 
 <body>
-  <dialog class="rules-container" aria-modal="true" id="rules">
+  <div class="rules-container" aria-modal="true" id="rules" hidden>
     <span class="rules__span">rules</span>
-    <form action="#" method="dialog">
-      <button class="rules__close" id="btn-close-rules" arial-label="Close rules">
-        <img src="./assets/img/images/icon-close.svg" alt="icon-close" class="close__img">
-      </button>
-    </form>
+    <button class="rules__close" id="btn-close-rules" arial-label="Close rules">
+      <img src="./assets/img/images/icon-close.svg" alt="icon-close" class="close__img">
+    </button>
     <div class="rules__bg">
       <img src="./assets/img/images/image-rules.svg" alt="rules" class="bg__img">
     </div>
-  </dialog>
+  </div>
   <header class="header">
     <div class="header__logo">
       <img src="./assets/img/images/logo.svg" alt="logo-rock-paper-scissors" class="logo__img">
