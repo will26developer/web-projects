@@ -11,11 +11,13 @@ const elements = {
     playerChoiceImg: document.getElementById("player-choice-img"),
     houseChoice: document.getElementById("house-choice"),
     houseChoiceImg: document.getElementById("house-choice-img"),
+    messageOnGameContainer: document.getElementById("message-ongame-container"),
     messageOnGame: document.getElementById("message-ongame"),
     btnPlayAgain: document.getElementById("btn-play-again"),
+    messageEndGameContainer: document.getElementById("message-endgame-container"),
     messageEndGame: document.getElementById("message-endgame"),
     btnResetGame: document.getElementById("btn-reset-game"),
-    btnRules: document.getElementById("btn-rules")
+    btnRules: document.getElementById("btn-rules") 
 
 }
 
