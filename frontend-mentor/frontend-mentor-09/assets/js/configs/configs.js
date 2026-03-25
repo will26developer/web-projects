@@ -7,15 +7,15 @@ const configs = {
         scissors:"paper",
         rock:"scissors"
     },
-    messages: {
+    message:{
         onGame:{
             player:"player's win",
             house:"house's win",
-            tie:"it's a tie",
+            tie:"it's a tie"
         },
-        offGame: {
-            player: "player win the game",
-            house: "house win the game"
+        offGame:{
+            player:"player win the game",
+            house:"house win the game"
         }
     },
     renderOptions: {

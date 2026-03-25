@@ -1,32 +1,46 @@
-import configs from "../configs/configs.js";
 import elements from "../elements/elements.js";
-import stateFunctions from "./stateFunctions.js";
+import configs from "../configs/configs.js";
 import utilFunctions from "./utilFunctions.js";
+import stateFunctions from "./stateFunctions.js";
 
 const uiFunctions = {
-    views: {
-        choices: elements.pickChoices,
-        results: elements.gameResults
+    setPickChoices: () => {
+        elements.pickChoices.classList.remove("hidden");
+        elements.gameResults.classList.add("hidden");
     },
-    setView: (view) => {
-        Object.values(uiFunctions.views).forEach(v => v.hidden = true);
-        uiFunctions.views[view].hidden = false;
+    setGameResults: () => {
+        elements.gameResults.classList.remove("hidden");
+        elements.pickChoices.classList.add("hidden");
     },
-    setMessageGameContainer: type => {
-        elements.messageOnGameContainer.hidden = type !== "on-game";
-        elements.messageEndGameContainer.hidden = type !== "end-game";
+    setMessageOnGameContainer: () => {
+        elements.messageOnGameContainer.classList.remove("hidden");
+        elements.messageEndGameContainer.classList.add("hidden"); 
+    },
+    setMessageEndGameContainer: () => {
+        elements.messageEndGameContainer.classList.remove("hidden");
+        elements.messageOnGameContainer.classList.add("hidden");
     },
     cleanElements: () => {
-        elements.playerChoice.classList.remove("wrap__blue", "wrap__yellow", "wrap__red");
+        elements.playerChoice.classList.remove("wrap__blue","wrap__yellow","wrap__red");
         elements.playerChoiceImg.src = "";
         elements.playerChoiceImg.alt = "";
-        elements.houseChoice.classList.remove("wrap__blue", "wrap__yellow", "wrap__red");
+        elements.houseChoice.classList.remove("wrap__blue","wrap__yellow","wrap__red");
         elements.houseChoiceImg.src = "";
         elements.houseChoiceImg.alt = "";
     },
-    renderScore: state => {
+    renderScores: state => {
         elements.playerScore.textContent = state.scores.player;
         elements.houseScore.textContent = state.scores.house;
+    },
+    renderMessageOnGame: state => elements.messageOnGame.textContent = configs.message.onGame[state.winnerRound],
+    renderMessageEndGame: state => {
+        uiFunctions.setMessageEndGameContainer();
+        if (state.scores.player > state.scores.house) {
+            elements.messageEndGame.textContent =  configs.message.offGame.player;
+        }
+        if (state.scores.house > state.scores.player) {
+            elements.messageEndGame.textContent = configs.message.offGame.house; 
+        }
     },
     renderPickers: state => {
         elements.playerChoice.classList.add(configs.renderOptions[state.playerChoice]);
@@ -36,33 +50,38 @@ const uiFunctions = {
         elements.houseChoiceImg.src = `./assets/img/images/icon-${state.houseChoice}.svg`;
         elements.houseChoiceImg.alt = `${state.houseChoice}`;
     },
-    renderOnGameMessage: state => elements.messageOnGame.textContent = configs.messages.onGame[state.winnerRound],
-
-    renderEndGameMessage: state => {
-        const messages = configs.messages.offGame;
-
-        if (state.scores.player > state.scores.house) {
-            elements.messageEndGame.textContent = messages.player;
-        } else {
-            elements.messageEndGame.textContent = messages.house;
-        }
-    },
-    renderResults: state => {
-        uiFunctions.setView("results");
+    renderResultsAndUpdate: player => {
+        const stateRef = utilFunctions.renderAndUpdate(player);
+        uiFunctions.setGameResults(); 
         uiFunctions.cleanElements();
-        uiFunctions.renderScore(state);
-        uiFunctions.renderPickers(state);
-        utilFunctions.observerGame(state);
+        uiFunctions.renderScores(stateRef);
+        uiFunctions.renderPickers(stateRef);
+        uiFunctions.renderMessageOnGame(stateRef);
+        utilFunctions.gameObserver(stateRef);
     },
     playAgain: () => {
-        uiFunctions.setView("choices");
+        uiFunctions.cleanElements();
+        uiFunctions.setPickChoices();
     },
-    resetGame: () => {
-        stateFunctions.resetState();
-        uiFunctions.playAgain();
+    resetScore: () => {
         elements.playerScore.textContent = 0;
         elements.houseScore.textContent = 0;
+    },
+    resetGame: () => {
+        uiFunctions.setMessageOnGameContainer();
+        uiFunctions.cleanElements();
+        uiFunctions.setPickChoices();
+        uiFunctions.resetScore();
+        stateFunctions.resetState();
+    },
+    openRules: () => {
+        elements.rulesContainer.classList.add("show__rules");
+        elements.overlay.classList.add("blur__bg");
+    },
+    closeRules: () => {
+        elements.rulesContainer.classList.remove("show__rules");
+        elements.overlay.classList.remove("blur__bg");
     }
-}
+ }
 
-export default uiFunctions;
+export default uiFunctions; 

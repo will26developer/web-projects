@@ -1,20 +1,24 @@
 import uiFunctions from "./uiFunctions.js";
-import utilFunctions from "./utilFunctions.js";
-
 
 const handlerFunctions = {
-    handlePickChoice: e => {
-        const element = e.target.closest(".choices__btn");
+    handlerPickChoice: e => {
+        let element = e.target.closest(".choice__btn");
         if (!element) return;
-        const player = element.dataset.choice;
-        utilFunctions.updateAndRender(player);
+        let player = element.dataset.choice; 
+        uiFunctions.renderResultsAndUpdate(player);
     },
-    handlePlayAgain: e => {
+    handlerBtnPlayAgain: e => {
         uiFunctions.playAgain();
     },
-    handleResetGame: e => {
+    handlerBtnResetGame: e => {
         uiFunctions.resetGame();
+    },
+    handlerBtnRules: e => {
+        uiFunctions.openRules()
+    },
+    handlerBtnCloseRules: e => {
+        uiFunctions.closeRules();
     }
 }
 
-export default handlerFunctions;
+export default handlerFunctions; 

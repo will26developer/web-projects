@@ -1,78 +1,93 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Frontend Mentor Project 09</title>
-  <link rel="stylesheet" href="./assets/css/styles.css">
-  <link rel="shortcut icon" href="./assets/img/images/favicon.ico" type="image/x-icon">
-  <script type="module" src="./assets/js/app.js"></script>
-</head>
-
-<body>
-  <div class="rules-container" aria-modal="true" id="rules" hidden>
-    <span class="rules__span">rules</span>
-    <button class="rules__close" id="btn-close-rules" arial-label="Close rules">
-      <img src="./assets/img/images/icon-close.svg" alt="icon-close" class="close__img">
-    </button>
-    <div class="rules__bg">
-      <img src="./assets/img/images/image-rules.svg" alt="rules" class="bg__img">
-    </div>
-  </div>
-  <header class="header">
-    <div class="header__logo">
-      <img src="./assets/img/images/logo.svg" alt="logo-rock-paper-scissors" class="logo__img">
-    </div>
-    <div class="header__panel">
-      <div class="panel__score">
-        <span class="score__span">player's score</span>
-        <p class="score__p" id="player-score">0</p>
-      </div>
-      <div class="panel__score">
-        <span class="score__span">house's score</span>
-        <p class="score__p" id="house-score">0</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Frontend Mentor Project 09</title>
+    <link rel="stylesheet" href="./assets/css/styles.css" />
+    <script type="module" src="./assets/js/app.js"></script>
+  </head>
+  <body>
+    <div class="rules-container" id="rules">
+      <button class="container__btn" id="btn-close-rules">
+        <img
+          src="./assets/img/images/icon-close.svg"
+          alt="icon-close"
+          class="btn__img"
+        />
+      </button>
+      <div class="container__bg">
+        <img
+          src="./assets/img/images/image-rules.svg"
+          alt="img-rules"
+          class="bg__rules"
+        />
       </div>
     </div>
-  </header>
-  <main class="main">
-    <section class="main__choices" id="pick-choices">
-      <button type="button" class="choices__btn wrap__blue" data-choice="paper">
-        <img src="./assets/img/images/icon-paper.svg" alt="icon-paper" class="choices__img">
-      </button>
-      <button type="button" class="choices__btn wrap__yellow" data-choice="scissors">
-        <img src="./assets/img/images/icon-scissors.svg" alt="icon-scissors" class="choices__img">
-      </button>
-      <button type="button" class="choices__btn wrap__red" data-choice="rock">
-        <img src="./assets/img/images/icon-rock.svg" alt="icon-rock" class="choices__img">
-      </button>
-    </section>
-    <section class="main__results" id="game-results" hidden>
-      <div class="results__player" id="player-choice">
-        <span class="results__span">you picked</span>
-        <div class="results__choice">
-          <img src="" alt="" class="results__img" id="player-choice-img">
+    <div class="overlay" id="overlay">
+      <header class="header">
+        <div class="header__logo">
+          <img
+            src="./assets/img/images/logo.svg"
+            alt="logo"
+            class="logo__img"
+          />
         </div>
-      </div>
-      <div class="results__message" id="message-ongame-container">
-        <p class="message__p" role="status" id="message-ongame"></p>
-        <button type="button" class="message__btn" id="btn-play-again">play again</button>
-      </div>
-      <div class="results__end" id="message-endgame-container" hidden>
-        <p class="end__p" role="status" id="message-endgame"></p>
-        <button type="button" class="end__btn" id="btn-reset-game">reset game</button>
-      </div>
-      <div class="results__house" id="house-choice">
-        <span class="results__span">the house picked</span>
-        <div class="results__choice">
-          <img src="" alt="" class="results__img" id="house-choice-img">
+        <div class="header__panel">
+          <div class="panel__score">
+            <span class="score__span">player's score</span>
+            <p class="score__p" id="player-score">0</p>
+          </div>
+          <div class="panel__score">
+            <span class="score__span">house's score</span>
+            <p class="score__p" id="house-score">0</p>
+          </div>
         </div>
-      </div>
-    </section>
-  </main>
-  <footer class="footer">
-    <button type="button" class="footer__btn" id="btn-rules">rules</button>
-  </footer>
-</body>
-
+      </header>
+      <main class="main">
+        <section class="main__choices" id="pick-choices">
+          <button class="choice__btn wrap__blue" data-choice="paper">
+            <img
+              src="./assets/img/images/icon-paper.svg"
+              alt="paper"
+              class="btn__icon"
+            />
+          </button>
+          <button class="choice__btn wrap__yellow" data-choice="scissors">
+            <img
+              src="./assets/img/images/icon-scissors.svg"
+              alt="scissors"
+              class="btn__icon"
+            />
+          </button>
+          <button class="choice__btn wrap__red" data-choice="rock">
+            <img
+              src="./assets/img/images/icon-rock.svg"
+              alt="rock"
+              class="btn__icon"
+            />
+          </button>
+        </section>
+        <section class="main__results hidden" id="game-results">
+          <div class="results__pick" id="player-choice">
+            <img src="" alt="" class="pick__img" id="player-choice-img" />
+          </div>
+          <div class="results__ongame" id="message-ongame-container">
+            <p class="ongame__p" id="message-ongame"></p>
+            <button class="ongame__btn" id="btn-play-again">play again</button>
+          </div>
+          <div class="results__endgame hidden" id="message-endgame-container">
+            <p class="endgame__p" id="message-endgame"></p>
+            <button class="endgame__btn" id="btn-reset-game">reset game</button>
+          </div>
+          <div class="results__pick" id="house-choice">
+            <img src="" alt="" class="pick__img" id="house-choice-img" />
+          </div>
+        </section>
+      </main>
+      <footer class="footer">
+        <button class="footer__btn" id="btn-rules">rules</button>
+      </footer>
+    </div>
+  </body>
 </html>
