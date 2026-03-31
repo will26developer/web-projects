@@ -1,7 +1,12 @@
 import elements from "../elements/elements.js";
 import stateFunctions from "../services/stateFunctions.js";
+import dataFunctions from "./dataFunctions.js";
+import utilFunctions from "./utilFunctions.js";
 
-let timeoutId;
+const debouncedSearch = utilFunctions.debounce(async (value) => {
+  stateFunctions.setFilterName(value);
+  await dataFunctions.applyFilters();
+}, 300);
 
 const handlerFunctions = {
     handlerBtnModeToggle: e => {
@@ -21,13 +26,11 @@ const handlerFunctions = {
     }, 
     handlerInputForm: e => {
         e.preventDefault()
-        clearTimeout(timeoutId);
-        timeoutId = setTimeout(() => {
-            stateFunctions.setFilterName(e.target.value);
-        },300)
+        debouncedSearch(e.target.value);
     },
-    handlerSelectRegion: e => {
+    handlerSelectRegion: async (e) => {
         stateFunctions.setFilterRegion(e.target.value);
+        await dataFunctions.applyFilters();
     }
 }
 

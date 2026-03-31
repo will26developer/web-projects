@@ -21,11 +21,11 @@ const apiCountriesController = async (req: Request<{}, {}, {}, Filter>, res: Res
     }
 
     if (name) {
-      countries = getCountryByName(countries,name);
+      countries = getCountryByName(countries,decodeURIComponent(name));
     }
 
     if (region) {
-      countries = getCountriesByRegion(countries,region);
+      countries = getCountriesByRegion(countries,decodeURIComponent(region));
     }
 
     return res.status(200).json({
