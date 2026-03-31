@@ -147,6 +147,7 @@ body {
     overflow: hidden;
     box-shadow: 0px 4px 12px var(--shadows);
     text-decoration: none;
+    border: none;
     transition: transform 0.2s ease, background-color 0.3s ease, box-shadow 0.3s ease;
 }
 

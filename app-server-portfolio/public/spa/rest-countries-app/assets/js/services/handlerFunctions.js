@@ -1,11 +1,11 @@
 import elements from "../elements/elements.js";
 import stateFunctions from "../services/stateFunctions.js";
-import dataFunctions from "./dataFunctions.js";
+import uiFunctions from "./uiFunctions.js";
 import utilFunctions from "./utilFunctions.js";
 
-const debouncedSearch = utilFunctions.debounce(async (value) => {
+const debouncedSearch = utilFunctions.debounce((value) => {
   stateFunctions.setFilterName(value);
-  await dataFunctions.applyFilters();
+  uiFunctions.renderCountries();
 }, 300);
 
 const handlerFunctions = {
@@ -28,9 +28,9 @@ const handlerFunctions = {
         e.preventDefault()
         debouncedSearch(e.target.value);
     },
-    handlerSelectRegion: async (e) => {
+    handlerSelectRegion: (e) => {
         stateFunctions.setFilterRegion(e.target.value);
-        await dataFunctions.applyFilters();
+        uiFunctions.renderCountries();
     }
 }
 
