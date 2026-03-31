@@ -21,9 +21,9 @@ const uiFunctions = {
         elements.countriesModule.append(fragment);
     },
     renderCountry: async () => {
+        elements.detailContainerModule.innerHTML = "";
         await dataFunctions.applyFilters();
         const data = stateFunctions.getAllCountries();
-        elements.detailContainerModule.innerHTML = "";
         elements.detailContainerModule.innerHTML = templates.countryViewTemplate(data);
     }
 }

@@ -4,7 +4,8 @@ import countryView from "../views/countryView.js";
 import errorView from "../views/errorView.js";
 
 const router = () => {
-    let [,,,route,param] = location.pathname.split("/");
+    const path = location.pathname.replace("/spa/rest-countries-app","")
+    let [,route,param] = path.split("/");
     countriesView.unmount(); 
     countryView.unmount();
     errorView.unmount();

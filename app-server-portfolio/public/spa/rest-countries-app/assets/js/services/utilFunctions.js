@@ -1,3 +1,4 @@
+import router from "../router/router.js";
 import dataFunctions from "./dataFunctions.js";
 import stateFunctions from "./stateFunctions.js";
 
@@ -23,8 +24,11 @@ const utilFunctions = {
        if (name) {
             history.pushState({},"",`/spa/rest-countries-app/country/${name}`);
        } else {
+        stateFunctions.cleanFilters();
         history.pushState({},"","/spa/rest-countries-app/countries");
        }
+
+       router();
     }
 }
 

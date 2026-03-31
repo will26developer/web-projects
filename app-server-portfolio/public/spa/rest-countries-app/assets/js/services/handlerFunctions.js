@@ -12,43 +12,43 @@ const debouncedSearch = utilFunctions.debounce((value) => {
 }, 300);
 
 const handlerFunctions = {
-    handlerBtnModeToggle: e => {
-        if (stateFunctions.getState().theme === "light-mode") {
-            elements.iconTheme.className = "fa-regular fa-sun";
-            elements.spanTheme.textContent = "Light Mode";
-            stateFunctions.setThemeMode("dark-mode");
-            elements.body.classList.remove("light-mode","dark-mode");
-            elements.body.classList.add("dark-mode");
-        } else {
-            elements.iconTheme.className = "fa-regular fa-moon";
-            elements.spanTheme.textContent = "Dark Mode";
-            stateFunctions.setThemeMode("light-mode");
-            elements.body.classList.remove("light-mode","dark-mode");
-            elements.body.classList.add("light-mode");
-        }
-    }, 
-    handlerInputForm: e => {
-        e.preventDefault()
-        debouncedSearch(e.target.value);
-    },
-    handlerSelectRegion: (e) => {
-        stateFunctions.setFilterRegion(e.target.value);
-        uiFunctions.renderCountries();
-    },
-    handlerCountryChoiceCard: e => {
-        let element = e.target.closest("[data-choice]");
-        if (!element) return 
-        let countryName = element.dataset.choice;
-        stateFunctions.setFilterName(countryName);
-        utilFunctions.navigate(countryName);
-    },
-    handlerBtnBackMenu: e => {
-        utilFunctions.navigate("");
-        stateFunctions.cleanFilters();
-        countryView.unmount();
-        errorView.unmount();
-        countriesView.mount();
-    }, 
-}
+  handlerBtnModeToggle: (e) => {
+    const theme = localStorage.getItem("theme");
+    if (theme === "light-mode") {
+        elements.iconTheme.classList.remove("fa-regular","fa-moon");
+        elements.iconTheme.classList.add("fa-regular","fa-sun");
+        elements.spanTheme.textContent = "Light Mode";
+        stateFunctions.setThemeMode("dark-mode");
+        elements.body.classList.remove("light-mode","dark-mode");
+        elements.body.classList.add("dark-mode");
+    } else {
+        elements.iconTheme.classList.remove("fa-regular","fa-moon");
+        elements.iconTheme.classList.add("fa-regular","fa-moon");
+        elements.spanTheme.textContent = "Dark Mode";
+        stateFunctions.setThemeMode("light-mode");
+        elements.body.classList.remove("light-mode","dark-mode");
+        elements.body.classList.add("light-mode");
+    }
+  },
+  handlerInputForm: (e) => {
+    e.preventDefault();
+    debouncedSearch(e.target.value);
+  },
+  handlerSelectRegion: (e) => {
+    stateFunctions.setFilterRegion(e.target.value);
+    uiFunctions.renderCountries();
+  },
+  handlerCountryChoiceCard: (e) => {
+    let element = e.target.closest("[data-choice]");
+    if (!element) return;
+    let countryName = element.dataset.choice;
+    stateFunctions.setFilterName(countryName);
+    utilFunctions.navigate(countryName);
+  },
+  handlerBtnBackMenu: (e) => {
+    utilFunctions.navigate("");
+    stateFunctions.cleanFilters();
+  },
+};
 
-export default handlerFunctions; 
+export default handlerFunctions;
