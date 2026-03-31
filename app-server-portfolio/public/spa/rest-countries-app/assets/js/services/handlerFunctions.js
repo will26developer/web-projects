@@ -1,20 +1,20 @@
 import elements from "../elements/elements.js";
-import state from "../state/state.js";
+import stateFunctions from "../services/stateFunctions.js";
 
 let timeoutId;
 
 const handlerFunctions = {
     handlerBtnModeToggle: e => {
-        if (state.theme === "light-mode") {
+        if (stateFunctions.getState().theme === "light-mode") {
             elements.iconTheme.className = "fa-regular fa-sun";
             elements.spanTheme.textContent = "Light Mode";
-            state.theme = "dark-mode";
+            stateFunctions.setThemeMode("dark-mode");
             elements.body.classList.remove("light-mode","dark-mode");
             elements.body.classList.add("dark-mode");
         } else {
             elements.iconTheme.className = "fa-regular fa-moon";
             elements.spanTheme.textContent = "Dark Mode";
-            state.theme = "light-mode";
+            stateFunctions.setThemeMode("light-mode");
             elements.body.classList.remove("light-mode","dark-mode");
             elements.body.classList.add("light-mode");
         }
@@ -23,13 +23,11 @@ const handlerFunctions = {
         e.preventDefault()
         clearTimeout(timeoutId);
         timeoutId = setTimeout(() => {
-            state.filter.name = e.target.value;
-            console.log(state.filter.name)
+            stateFunctions.setFilterName(e.target.value);
         },300)
     },
     handlerSelectRegion: e => {
-        state.filter.region = e.target.value;
-        console.log(state.filter.region)
+        stateFunctions.setFilterRegion(e.target.value);
     }
 }
 
