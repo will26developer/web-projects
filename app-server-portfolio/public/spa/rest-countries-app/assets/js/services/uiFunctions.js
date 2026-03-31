@@ -19,6 +19,12 @@ const uiFunctions = {
             fragment.append(button);
         })
         elements.countriesModule.append(fragment);
+    },
+    renderCountry: async () => {
+        await dataFunctions.applyFilters();
+        const data = stateFunctions.getAllCountries();
+        elements.detailContainerModule.innerHTML = "";
+        elements.detailContainerModule.innerHTML = templates.countryViewTemplate(data);
     }
 }
 

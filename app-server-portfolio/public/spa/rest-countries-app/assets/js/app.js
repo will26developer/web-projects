@@ -4,9 +4,9 @@ import dataFunctions from "./services/dataFunctions.js";
 
 window.addEventListener("DOMContentLoaded",() => {
     const initApp = () => {
+        dataFunctions.getDataCountries();
         listeners();
         router();
-        dataFunctions.getDataCountries();
     }
 
     initApp()

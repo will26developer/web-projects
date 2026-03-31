@@ -21,6 +21,11 @@ const stateFunctions = {
     setThemeMode: mode => {
         const stateRef = stateFunctions.getState();
         stateRef.theme = mode;
+    },
+    cleanFilters: () => {
+        const stateRef = stateFunctions.getState();
+        stateRef.filter.name = "";
+        stateRef.filter.region = "";
     }
 
 }

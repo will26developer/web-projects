@@ -18,6 +18,13 @@ const utilFunctions = {
                 fn(...args);
             },delay)
         }
+    },
+    navigate: name => {
+       if (name) {
+            history.pushState({},"",`/spa/rest-countries-app/country/${name}`);
+       } else {
+        history.pushState({},"","/spa/rest-countries-app/countries");
+       }
     }
 }
 
