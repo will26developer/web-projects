@@ -1,0 +1,77 @@
+:root {
+  --bg: #020617;
+  --glass: rgba(255,255,255,0.05);
+  --border: rgba(255,255,255,0.08);
+  --primary: #38bdf8;
+  --text: #e2e8f0;
+  --text-soft: rgba(226,232,240,0.7);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+body {
+  height: 100vh;
+  background: radial-gradient(circle at 20% 0%, #1e293b, #020617 60%);
+  color: var(--text);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Glow background */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at 80% 20%, rgba(56,189,248,0.15), transparent 40%);
+  pointer-events: none;
+}
+
+/* Container */
+.error-container {
+  padding: 3rem 2.5rem;
+  border-radius: 16px;
+  text-align: center;
+
+  background: var(--glass);
+  backdrop-filter: blur(14px);
+  border: 1px solid var(--border);
+
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+  animation: fadeIn 0.8s ease;
+}
+
+/* Error code */
+.container-error-status {
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 1rem;
+  letter-spacing: -2px;
+}
+
+/* Error message */
+.container-error-message {
+  font-size: clamp(1rem, 1.2vw, 1.2rem);
+  color: var(--text-soft);
+  max-width: 400px;
+  line-height: 1.5;
+}
+
+/* Subtle animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}

@@ -1,10 +1,12 @@
 import express, {Application} from "express";
 import frontendMentorRouter from "../routers/statics-routers/frontendMentorRouter";
+import mainRouter from "../routers/statics-routers/mainRouter";
 import spaController from "../controllers/statics-controllers/spaController";
 import apiCountriesRouter from "../routers/api-routers/apiCountriesRouter";
 import errorHandler from "./errorHandler";
 
 const setupRouters = (app:Application) => {
+  app.use("/main",mainRouter);
   app.use("/",frontendMentorRouter);
   app.use("/api",apiCountriesRouter);
   app.use("/spa/:name",spaController);
