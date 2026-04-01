@@ -6,6 +6,7 @@ const stateFunctions = {
   getAllCountries: () => state.allCountries,
   getFilterName: () => state.filter.name,
   getFilterRegion: () => state.filter.region,
+  getLoading: () => state.loading,
   getTheme:() => state.theme,
   setFilterName: (name = "") => {
     const stateRef = stateFunctions.getState();
@@ -24,6 +25,10 @@ const stateFunctions = {
     stateRef.theme = mode;
     console.log(stateRef.theme)
     localStorage.setItem("theme", stateRef.theme);
+  },
+  setLoading:(flag) => {
+    const stateRef = stateFunctions.getState();
+    stateRef.loading = flag;
   },
   initializeTheme: () => {
     const stateRef = stateFunctions.getState(); 

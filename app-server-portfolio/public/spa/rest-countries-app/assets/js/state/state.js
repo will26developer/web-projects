@@ -7,6 +7,7 @@ const state = {
         name:"",
         region:""
     },
+    loading:false, 
     theme:"light-mode"
 }
 

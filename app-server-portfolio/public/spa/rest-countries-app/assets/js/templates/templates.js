@@ -6,7 +6,7 @@ const templates = {
         let {name,flag,population,region,capital} = c;
         return `
           <div class="card__flag">
-            <img src=${flag.png} alt=${flag.alt}>
+            <img src=${flag.png} alt=${flag.alt} class="flag__bg">
           </div>
           <article class="card__description">
             <h2 class="description__title">${name}</h2> 
@@ -23,7 +23,7 @@ const templates = {
           <img src=${flag.png} alt=${flag.alt} class="flag__detail">
         </div>
         <div class="detail__container">
-          <h3>${name}</h3>
+          <h3 class="container__title">${name}</h3>
           <div class="container__item">
             <p><strong>Native Name: </strong>${nativeName.common}</p>
             <p><strong>Population: </strong>${population}</p>

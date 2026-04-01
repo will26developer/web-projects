@@ -1,4 +1,4 @@
-import express, {Request, Response} from "express";
+import express, { Request, Response } from "express";
 import Filter from "../../models/Filter";
 import validateCountryName from "../../utils/validateCountryName";
 import getCountryByName from "../../services/getCountryByName";
@@ -8,7 +8,7 @@ import getCountriesByRegion from "../../services/getCountriesByRegion";
 
 const apiCountriesController = async (req: Request<{}, {}, {}, Filter>, res: Response) => {
   let cachedCountries: Country[] = [];
-  let {name = "",region = ""} = req.query;
+  let { name = "", region = "" } = req.query;
   if (cachedCountries.length === 0) {
     cachedCountries = await getCountries();
   }
@@ -16,26 +16,26 @@ const apiCountriesController = async (req: Request<{}, {}, {}, Filter>, res: Res
   try {
     if (name && !validateCountryName(name)) {
       return res.status(400).json({
-        message: "Invalid country name format"
-      })
+        message: "Invalid country name format",
+      });
     }
 
     if (name) {
-      countries = getCountryByName(countries,decodeURIComponent(name));
+      countries = getCountryByName(countries, decodeURIComponent(name));
     }
 
     if (region) {
-      countries = getCountriesByRegion(countries,decodeURIComponent(region));
+      countries = getCountriesByRegion(countries, decodeURIComponent(region));
     }
 
     return res.status(200).json({
-      countries
-    })
+      countries,
+    });
   } catch (error) {
     return res.status(500).json({
-      message: "Internal server error"
+      message: "Internal server error",
     });
   }
-}
+};
 
 export default apiCountriesController;
