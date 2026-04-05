@@ -1,3 +1,4 @@
+import stateFunctions from "./stateFunctions.js";
 
 
 
@@ -19,7 +20,12 @@ const utilFunctions = {
         }
     },
     navigate: name => {
-       
+        if (name) {
+            stateFunctions.setFilterName(name);
+            location.hash = `/country/${name}`;
+        } else {
+            location.hash = "/countries";
+        }
     }
 }
 

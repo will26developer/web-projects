@@ -12,7 +12,8 @@ const router = () => {
     if ((route === "" || route === "countries") && !path) {
         countriesView.mount()
     } else if (route === "country" && path) {
-        countryView.mount();
+        let country = decodeURIComponent(path);
+        countryView.mount(country);
     } else {
         errorView.mount();
     }

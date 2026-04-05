@@ -32,6 +32,15 @@ const handlerFunctions = {
     },
     handlerSelectRegion: e => {
         stateFunctions.setFilterRegion(e.target.value);
+    },
+    handleCountryCardClick: e => {
+        let element = e.target.closest("[data-choice]");
+        if (!element) return;
+        let countryName = element.dataset.choice;
+        utilFunctions.navigate(countryName);
+    },
+    handleBtnReturn: e => {
+        utilFunctions.navigate("");
     }
 }
 

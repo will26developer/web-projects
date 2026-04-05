@@ -45,6 +45,11 @@ const stateFunctions = {
         stateFunctions.setTheme(theme);
         const stateRef = stateFunctions.getState();
         localStorage.setItem("theme",stateRef.theme);
+    },
+    cleanFilters: () => {
+        const stateRef = stateFunctions.getState();
+        stateRef.filter.name = "";
+        stateRef.filter.region = "";
     }
 }
 

@@ -11,7 +11,7 @@ window.addEventListener("DOMContentLoaded",() => {
         stateFunctions.subscribe(uiFunctions.renderCountries)
         await dataFunctions.getCountries();
         listeners();
-        router()
+        router();
     }
 
     initApp();
