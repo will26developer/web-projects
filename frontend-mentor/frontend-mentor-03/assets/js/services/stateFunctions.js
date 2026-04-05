@@ -1,46 +1,51 @@
-import elements from "../elements/elements.js";
 import state from "../state/state.js";
 
 const stateFunctions = {
-  getState: () => state,
-  getAllCountries: () => state.allCountries,
-  getFilterName: () => state.filter.name,
-  getFilterRegion: () => state.filter.region,
-  getLoading: () => state.loading,
-  getTheme:() => state.theme,
-  setFilterName: (name = "") => {
-    const stateRef = stateFunctions.getState();
-    stateRef.filter.name = name;
-  },
-  setFilterRegion: (region = "") => {
-    const stateRef = stateFunctions.getState();
-    stateRef.filter.region = region;
-  },
-  setAllContries: (countries = []) => {
-    const stateRef = stateFunctions.getState();
-    stateRef.allCountries = countries;
-  },
-  setThemeMode: (mode) => {
-    const stateRef = stateFunctions.getState();
-    stateRef.theme = mode;
-    console.log(stateRef.theme)
-    localStorage.setItem("theme", stateRef.theme);
-  },
-  setLoading:(flag) => {
-    const stateRef = stateFunctions.getState();
-    stateRef.loading = flag;
-  },
-  initializeTheme: () => {
-    const stateRef = stateFunctions.getState(); 
-    if (!localStorage.getItem("theme")) {
+    listeners: [],
+    subscribe: fn => {
+        stateFunctions.listeners.push(fn);
+    },
+    notify: () => {
+        stateFunctions.listeners.forEach(fn => fn());
+    },
+    getState: () => state,
+    setCountries: countries => {
+        const stateRef = stateFunctions.getState(); 
+        stateRef.countries = countries;
+        stateFunctions.notify();
+    },
+    setFilterName: name => {
+        const stateRef = stateFunctions.getState();
+        stateRef.filter.name = name;
+        stateFunctions.notify();
+    },
+    setFilterRegion: region => {
+        const stateRef = stateFunctions.getState();
+        stateRef.filter.region = region;
+        stateFunctions.notify()
+    }, 
+    setLoading: flag => {
+        const stateRef = stateFunctions.getState();
+        stateRef.loading = flag;
+        stateFunctions.notify()
+    },
+    setTheme: theme => {
+        const stateRef = stateFunctions.getState();
+        stateRef.theme = theme;
+    },
+    initializeTheme: () => {
+        const stateRef = stateFunctions.getState();
+        const stored = localStorage.getItem("theme");
+        if (!stored) {
+            localStorage.setItem("theme",stateRef.theme);
+        }
+        stateRef.theme = stored;
+    },
+    saveTheme: theme => {
+        stateFunctions.setTheme(theme);
+        const stateRef = stateFunctions.getState();
         localStorage.setItem("theme",stateRef.theme);
-    } 
-  },
-  cleanFilters: () => {
-    const stateRef = stateFunctions.getState();
-    stateRef.filter.name = "";
-    stateRef.filter.region = "";
-  },
-};
+    }
+}
 
 export default stateFunctions;

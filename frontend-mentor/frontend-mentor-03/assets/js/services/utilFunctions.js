@@ -1,6 +1,4 @@
-import router from "../router/router.js";
-import dataFunctions from "./dataFunctions.js";
-import stateFunctions from "./stateFunctions.js";
+
 
 
 const regex= /^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ\s'’-]+$/;
@@ -21,14 +19,7 @@ const utilFunctions = {
         }
     },
     navigate: name => {
-       if (name) {
-            history.pushState({},"",`/spa/rest-countries-app/country/${name}`);
-       } else {
-        stateFunctions.cleanFilters();
-        history.pushState({},"","/spa/rest-countries-app/countries");
-       }
-
-       router();
+       
     }
 }
 

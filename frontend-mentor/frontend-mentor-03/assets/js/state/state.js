@@ -1,13 +1,12 @@
 
 
 const state = {
-    allCountries: [],
-    filteredCountries: [],
+    countries: [],
     filter: {
-        name:"",
-        region:""
+        name: "",
+        region: ""
     },
-    loading:false, 
+    loading:false,
     theme:"light-mode"
 }
 

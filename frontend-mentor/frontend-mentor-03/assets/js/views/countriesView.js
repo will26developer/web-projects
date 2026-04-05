@@ -2,12 +2,11 @@ import elements from "../elements/elements.js";
 import uiFunctions from "../services/uiFunctions.js";
 
 
-
 const countriesView = {
-    mount: async () => {
+    mount: () => {
         elements.searchModule.classList.remove("hidden");
         elements.countriesModule.classList.remove("hidden");
-        await uiFunctions.renderCountries()
+        uiFunctions.renderCountries();
     },
     unmount: () => {
         elements.searchModule.classList.add("hidden");
@@ -15,4 +14,4 @@ const countriesView = {
     }
 }
 
-export default countriesView; 
+export default countriesView;

@@ -1,13 +1,14 @@
 
 
+
 const elements = {
     body: document.querySelector("body"),
-    btnThemeMode: document.getElementById("btn-theme-mode"),
+    btnToggleMode: document.getElementById("btn-theme-mode"),
     iconTheme: document.getElementById("icon-theme"),
     spanTheme: document.getElementById("span-theme"),
-    searchModule: document.getElementById("search-module"),
+    searchModule: document.getElementById("search-module"), 
     searchForm: document.getElementById("search-form"),
-    searchInput: document.getElementById("search-input"),
+    searchInput: document.getElementById("search-input"), 
     searchRegion: document.getElementById("search-region"),
     countriesModule: document.getElementById("countries-module"),
     countryModule: document.getElementById("country-detail-module"),
@@ -17,4 +18,4 @@ const elements = {
     btnErrorBack: document.getElementById("btn-error-back")
 }
 
-export default elements;
+export default elements; 
