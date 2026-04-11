@@ -48,6 +48,7 @@
   display: none !important;
 }
 
+
 body {
   display: flex;
   justify-content: center;
@@ -216,12 +217,12 @@ body {
 
 .ongame__p {
   color: var(--white-color);
-  font-size: clamp(12px,5vw,30px)
+  font-size: clamp(12px, 5vw, 30px)
 }
 
 .ongame__btn {
   font-family: var(--font-barlow-bold);
-  font-size: clamp(12px,2vw,20px);
+  font-size: clamp(12px, 2vw, 20px);
   background-color: var(--light-blue-400);
   color: var(--white-color);
   text-transform: uppercase;
@@ -244,12 +245,12 @@ body {
 
 .endgame__p {
   color: var(--white-color);
-  font-size: clamp(12px,5vw,30px)
+  font-size: clamp(12px, 5vw, 30px)
 }
 
 .endgame__btn {
   font-family: var(--font-barlow-bold);
-  font-size: clamp(12px,2vw,20px);
+  font-size: clamp(12px, 2vw, 20px);
   background-color: var(--gold-500);
   color: var(--white-color);
   text-transform: uppercase;
