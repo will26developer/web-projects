@@ -1,8 +1,10 @@
 
 
 export const initialState = {
-  countries: [],
-  filter: {
+  data:{
+    countries:[]
+  },
+  filters: {
     name: "",
     region: ""
   },
