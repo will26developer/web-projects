@@ -1,0 +1,19 @@
+/*Fonts*/
+@font-face {
+    font-family: "BarlowSemiCondensed-Bold";
+    src: url(./assets/fonts/Barlow_Semi_Condensed/BarlowSemiCondensed-Bold.ttf);
+}
+
+@font-face {
+    font-family: "BarlowSemiCondensed-Medium";
+    src: url(./assets/fonts/Barlow_Semi_Condensed/BarlowSemiCondensed-Medium.ttf);
+}
+
+@font-face {
+    font-family: "BarlowSemiCondensed-Light";
+    src: url(./assets/fonts/Barlow_Semi_Condensed/BarlowSemiCondensed-Light.ttf);
+}
+
+:root {
+    
+}
