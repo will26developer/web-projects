@@ -1,12 +1,14 @@
 import React from 'react'
-import { ChoicesComponent } from './ChoicesComponent'
-import { ResultsComponent } from './ResultsComponent'
+import { ChoiceComponent } from "./ChoiceComponent";
+import { ResultsComponent } from "./ResultsComponent";
+import { useGame } from '../hooks/useGame';
 
 export const MainComponent = () => {
+  const {state} = useGame();
+  const results = state.ui.showResults; 
   return (
-    <main className='main'>
-        <ChoicesComponent/>
-        <ResultsComponent/>
+    <main className="main">
+      {!results ? <ChoiceComponent/> : <ResultsComponent/>}
     </main>
   )
 }

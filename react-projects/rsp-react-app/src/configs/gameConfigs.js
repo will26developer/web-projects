@@ -1,36 +1,38 @@
+import Logo from "../assets/img/images/logo.svg";
+import Rules from "../assets/img/images/image-rules.svg";
 import Paper from "../assets/img/images/icon-paper.svg";
 import Scissors from "../assets/img/images/icon-scissors.svg";
 import Rock from "../assets/img/images/icon-rock.svg";
-import Logo from "../assets/img/images/logo.svg";
-import Rules from "../assets/img/images/image-rules.svg";
+import Close from "../assets/img/images/icon-close.svg";
 
 export const gameConfigs = {
     options:["paper","scissors","rock"],
-    imgStorage: {
-        paper: Paper,
-        scissors: Scissors,
-        rock: Rock,
-        logo: Logo,
-        rules: Rules
-    },
-    gamePlayerOptions: {
+    gamePlayerOptions:{
         paper: "rock",
         scissors: "paper",
         rock: "scissors"
     },
-    classStorage: {
-        paper: "wrap__blue",
-        scissors: "wrap__yellow",
-        rock: "wrap__red"        
+    imgStorage: {
+        paper:Paper,
+        scissors:Scissors,
+        rock:Rock, 
+        logo:Logo,
+        rules:Rules,
+        close: Close
     },
-    message: {
+    classStorage: {
+        paper: "wrap__blue", 
+        scissors: "wrap__yellow",
+        rock: "wrap__red"
+    },
+    messages:{
         onGame:{
             player: "player win",
             house: "house win",
-            tie: "tie"
+            tie: "it's a tie"
         },
         endGame: {
-            player: "player win the game",
+            player:"player win the game",
             house: "house win the game"
         }
     },

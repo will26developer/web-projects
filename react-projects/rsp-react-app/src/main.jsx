@@ -1,10 +1,9 @@
-import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
-import {RspProvider} from './context/RspProvider.jsx';
-import { AppComponent } from './AppComponent.jsx';
+import { AppComponent } from './AppComponent'
+import { RspProvider} from "./context/RspProvider"
 createRoot(document.getElementById('root')).render(
   <RspProvider>
-    <AppComponent />
-  </RspProvider> 
+    <AppComponent/>
+  </RspProvider>,
 )

@@ -1,6 +1,6 @@
-import {gameConfigs} from "../configs/gameConfigs"
+import { gameConfigs } from "../configs/gameConfigs"
 
-export const getHouseChoices = () => {
-    const {options} = gameConfigs;
+export const getHouseChoice = () => {
+    const { options } = gameConfigs;
     return options[Math.floor(Math.random() * options.length)];
 }
