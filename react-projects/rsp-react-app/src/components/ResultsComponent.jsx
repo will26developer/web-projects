@@ -9,8 +9,8 @@ export const ResultsComponent = () => {
   const {round,playerChoice,houseChoice} = state.game;
   const {imgStorage, classStorage, maxRound} = gameConfigs;
   return (
-    <section className={`results__pick ${classStorage[playerChoice]}`}>
-        <div className="results__pick">
+    <section className="main__results">
+        <div className={`results__pick ${classStorage[playerChoice]}`}>
             <img src={imgStorage[playerChoice]} alt="pick-player" className="pick__img" />
         </div>
         {round <= maxRound ? <MessageOnGameComponent/> : <MessageEndGameComponent/>}
