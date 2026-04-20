@@ -13,8 +13,8 @@ export const useFetchCountries = () => {
             dispatch({
                 type:"SET_LOADING"
             })
-            const url = name || region ? `http://localhost:5173/api/countries?name=${name}&region=${region}`:
-                        "http://localhost:5173/api/countries";
+            const url = name || region ? `/api/countries?name=${name}&region=${region}`:
+                        "/api/countries";
             const response = await fetch(url);
             const data = await response.json();
             dispatch({
