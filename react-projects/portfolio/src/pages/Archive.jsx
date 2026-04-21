@@ -14,8 +14,15 @@ export const Archive = () => {
         </div>
 
         <h2 className="section-label">02. Project Archive</h2>
-
+        <div className="archive-grid ">
+          <div className="grid-title">
+            <h3 className="title-grid">Statics and frontend projects</h3>
+          </div>
+        </div>
         <div className="archive-grid">
+          <div className="grid-title">
+            <h3 className="title-grid">Fullstack Projects</h3>
+          </div>
         </div>
       </div>
     </section>
