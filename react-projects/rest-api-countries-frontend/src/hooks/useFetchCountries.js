@@ -13,7 +13,7 @@ export const useFetchCountries = () => {
             dispatch({
                 type:"SET_LOADING"
             })
-            const url = name || region ? `127.0.0.1:8080/api/countries?name=${name}&region=${region}`:
+            const url = name || region ? `${import.meta.env.RENDER_API_URL}?name=${name}&region=${region}`:
                         "/api/countries";
             const response = await fetch(url);
             const data = await response.json();
