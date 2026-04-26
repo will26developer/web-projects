@@ -6,7 +6,7 @@ export const useFetchCountries = () => {
 
   let name = state.filters.name;
   let region = state.filters.region;
-  const BASE_URL = import.meta.env.RENDER_API_URL;
+  const BASE_URL = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     const fetchCountries = async () => {
