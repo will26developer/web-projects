@@ -6,6 +6,7 @@ export const useFetchCountries = () => {
 
   let name = state.filters.name;
   let region = state.filters.region;
+  const BASE_URL = import.meta.env.RENDER_API_URL;
 
   useEffect(() => {
     const fetchCountries = async () => {
@@ -13,8 +14,8 @@ export const useFetchCountries = () => {
             dispatch({
                 type:"SET_LOADING"
             })
-            const url = name || region ? `${import.meta.env.RENDER_API_URL}?name=${name}&region=${region}`:
-                        "/api/countries";
+            const url = name || region ? `${BASE_URL}?name=${name}&region=${region}`:
+                        BASE_URL;
             const response = await fetch(url);
             const data = await response.json();
             dispatch({
