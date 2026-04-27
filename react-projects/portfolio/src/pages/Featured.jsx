@@ -37,7 +37,7 @@ export const Featured = () => {
 
             <div className="card-footer">
               <a
-                href="https://web-projects-onrq.onrender.com/"
+                href="https://web-projects-4jun.vercel.app/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-link"
