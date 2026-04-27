@@ -47,7 +47,7 @@ export const projects = {
     fullstack:[
         {
             img:fullstack1,
-            url:"https://web-projects-onrq.onrender.com/"
+            url:"https://web-projects-4jun.vercel.app/"
         }
     ]
 }
