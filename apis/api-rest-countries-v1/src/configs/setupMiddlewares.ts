@@ -3,7 +3,7 @@ import cors from "cors";
 import helmet from "helmet";
 import { AppError } from "../errors/AppError";
 
-const allowedOrigins = ["https://web-projects-4jun.vercel.app"];
+const allowedOrigins = ["https://web-projects-4jun.vercel.app","http://localhost:5173"];
 
 export const setupMiddlewares = (app: Application) => {
   app.use(helmet());
