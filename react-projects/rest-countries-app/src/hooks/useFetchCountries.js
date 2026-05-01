@@ -17,7 +17,7 @@ export const useFetchCountries = () => {
         const countries = await axios.get(url);
         dispatch({
           type: "SET_COUNTRIES",
-          payload: countries.data.filteredCountries
+          payload: countries.data.countriesFiltered
         })
       } catch (error) {
         console.error("Error: ", error);
