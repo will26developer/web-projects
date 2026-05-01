@@ -1,0 +1,30 @@
+{"level":"info","message":"GET /countries request","query":{"name":"","region":"Americas"},"service":"countries-service","timestamp":"2026-05-01T16:01:41.273Z"}
+{"level":"info","message":"Countries fetch from API...","service":"countries-service","timestamp":"2026-05-01T16:01:41.278Z"}
+{"level":"info","message":"HTTP request → restcountries","service":"countries-service","timestamp":"2026-05-01T16:01:41.279Z","url":"https://restcountries.com/v3.1/all?fields=name,capital,population,flags,region,subregion,tld,languages,currencies"}
+{"duration":1114,"level":"info","message":"HTTP success → restcountries","service":"countries-service","size":250,"status":200,"timestamp":"2026-05-01T16:01:42.736Z"}
+{"count":250,"level":"info","message":"Countries fetched and cached","service":"countries-service","timestamp":"2026-05-01T16:01:42.739Z"}
+{"level":"info","message":"Filtering countries","name":"","region":"Americas","service":"countries-service","timestamp":"2026-05-01T16:01:42.739Z"}
+{"count":56,"level":"info","message":"Filtered result","service":"countries-service","timestamp":"2026-05-01T16:01:42.740Z"}
+{"count":56,"level":"info","message":"GET /countries response","service":"countries-service","timestamp":"2026-05-01T16:01:42.740Z"}
+{"level":"info","message":"GET /countries request","query":{"name":"","region":""},"service":"countries-service","timestamp":"2026-05-01T16:01:52.092Z"}
+{"level":"info","message":"Countries cache hit...","service":"countries-service","timestamp":"2026-05-01T16:01:52.093Z"}
+{"level":"info","message":"Filtering countries","name":"","region":"","service":"countries-service","timestamp":"2026-05-01T16:01:52.094Z"}
+{"count":250,"level":"info","message":"Filtered result","service":"countries-service","timestamp":"2026-05-01T16:01:52.094Z"}
+{"count":250,"level":"info","message":"GET /countries response","service":"countries-service","timestamp":"2026-05-01T16:01:52.095Z"}
+{"level":"info","message":"GET /countries request","query":{"name":"Spain","region":""},"service":"countries-service","timestamp":"2026-05-01T16:02:11.141Z"}
+{"level":"info","message":"Countries cache hit...","service":"countries-service","timestamp":"2026-05-01T16:02:11.142Z"}
+{"level":"info","message":"Filtering countries","name":"Spain","region":"","service":"countries-service","timestamp":"2026-05-01T16:02:11.143Z"}
+{"count":1,"level":"info","message":"Filtered result","service":"countries-service","timestamp":"2026-05-01T16:02:11.143Z"}
+{"count":1,"level":"info","message":"GET /countries response","service":"countries-service","timestamp":"2026-05-01T16:02:11.143Z"}
+{"level":"info","message":"GET /countries request","query":{"name":"Iran","region":""},"service":"countries-service","timestamp":"2026-05-01T16:02:42.570Z"}
+{"level":"info","message":"Countries cache hit...","service":"countries-service","timestamp":"2026-05-01T16:02:42.570Z"}
+{"level":"info","message":"Filtering countries","name":"Iran","region":"","service":"countries-service","timestamp":"2026-05-01T16:02:42.571Z"}
+{"count":1,"level":"info","message":"Filtered result","service":"countries-service","timestamp":"2026-05-01T16:02:42.571Z"}
+{"count":1,"level":"info","message":"GET /countries response","service":"countries-service","timestamp":"2026-05-01T16:02:42.571Z"}
+{"level":"warn","message":"Handled AppError Route not found, fetch to /api/countries","method":"GET","query":{},"service":"countries-service","stack":"Error: Route not found, fetch to /api/countries\n    at /home/william/Escritorio/web-projects/apis/api-rest-countries-v1/src/configs/setupRouters.ts:10:14\n    at Layer.handleRequest (/home/william/Escritorio/web-projects/apis/api-rest-countries-v1/node_modules/router/lib/layer.js:152:17)\n    at trimPrefix (/home/william/Escritorio/web-projects/apis/api-rest-countries-v1/node_modules/router/index.js:342:13)\n    at /home/william/Escritorio/web-projects/apis/api-rest-countries-v1/node_modules/router/index.js:297:9\n    at processParams (/home/william/Escritorio/web-projects/apis/api-rest-countries-v1/node_modules/router/index.js:582:12)\n    at next (/home/william/Escritorio/web-projects/apis/api-rest-countries-v1/node_modules/router/index.js:291:5)\n    at read (/home/william/Escritorio/web-projects/apis/api-rest-countries-v1/node_modules/body-parser/lib/read.js:53:5)\n    at urlencodedParser (/home/william/Escritorio/web-projects/apis/api-rest-countries-v1/node_modules/body-parser/lib/types/urlencoded.js:57:5)\n    at Layer.handleRequest (/home/william/Escritorio/web-projects/apis/api-rest-countries-v1/node_modules/router/lib/layer.js:152:17)\n    at trimPrefix (/home/william/Escritorio/web-projects/apis/api-rest-countries-v1/node_modules/router/index.js:342:13)","status":404,"timestamp":"2026-05-01T16:02:51.550Z","url":"/api"}
+{"level":"info","message":"GET /countries request","query":{"name":"","region":""},"service":"countries-service","timestamp":"2026-05-01T16:03:07.375Z"}
+{"level":"info","message":"Countries cache hit...","service":"countries-service","timestamp":"2026-05-01T16:03:07.375Z"}
+{"level":"info","message":"Filtering countries","name":"","region":"","service":"countries-service","timestamp":"2026-05-01T16:03:07.376Z"}
+{"count":250,"level":"info","message":"Filtered result","service":"countries-service","timestamp":"2026-05-01T16:03:07.376Z"}
+{"count":250,"level":"info","message":"GET /countries response","service":"countries-service","timestamp":"2026-05-01T16:03:07.376Z"}
+{"level":"info","message":"Server running on port: 8080","service":"countries-service","timestamp":"2026-05-01T16:13:18.162Z"}
