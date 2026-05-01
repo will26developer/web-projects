@@ -1,0 +1,46 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.httpClientPlugin = void 0;
+const AppError_1 = require("../errors/AppError");
+const logger_1 = __importDefault(require("../logger/logger"));
+const URL = "https://restcountries.com/v3.1/all?fields=name,capital,population,flags,region,subregion,tld,languages,currencies";
+const httpClientPlugin = async () => {
+    const start = Date.now();
+    try {
+        logger_1.default.info("HTTP request → restcountries", { url: URL });
+        const response = await fetch(URL);
+        const duration = Date.now() - start;
+        if (!response.ok) {
+            logger_1.default.error("HTTP error → restcountries", {
+                status: response.status,
+                statusText: response.statusText,
+                duration,
+            });
+            throw new AppError_1.AppError("Fetch countries fail", response.status);
+        }
+        const data = await response.json();
+        logger_1.default.info("HTTP success → restcountries", {
+            status: response.status,
+            duration,
+            size: Array.isArray(data) ? data.length : undefined,
+        });
+        return data;
+    }
+    catch (error) {
+        const duration = Date.now() - start;
+        logger_1.default.error("HTTP request failed → restcountries", {
+            duration,
+            error: error instanceof Error ? error.message : error,
+            stack: error instanceof Error ? error.stack : undefined,
+        });
+        // 👇 no pierdas contexto si ya es AppError
+        if (error instanceof AppError_1.AppError) {
+            throw error;
+        }
+        throw new AppError_1.AppError("Fetch fail, please fix the problem", 500);
+    }
+};
+exports.httpClientPlugin = httpClientPlugin;

@@ -28,3 +28,4 @@
 {"count":250,"level":"info","message":"Filtered result","service":"countries-service","timestamp":"2026-05-01T16:03:07.376Z"}
 {"count":250,"level":"info","message":"GET /countries response","service":"countries-service","timestamp":"2026-05-01T16:03:07.376Z"}
 {"level":"info","message":"Server running on port: 8080","service":"countries-service","timestamp":"2026-05-01T16:13:18.162Z"}
+{"level":"info","message":"Server running on port: 8080","service":"countries-service","timestamp":"2026-05-01T16:18:50.551Z"}
