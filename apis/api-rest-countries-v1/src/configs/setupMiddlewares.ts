@@ -1,6 +1,7 @@
 import express, { Application } from "express";
 import cors from "cors";
 import helmet from "helmet";
+import { AppError } from "../errors/AppError";
 
 const allowedOrigins = ["https://web-projects-4jun.vercel.app"];
 
@@ -16,7 +17,7 @@ export const setupMiddlewares = (app: Application) => {
           return callback(null, true);
         }
 
-        return callback(new Error("Not allowed by CORS"));
+        return callback(new AppError("Not allowed by CORS",403));
       },
     }),
   );
