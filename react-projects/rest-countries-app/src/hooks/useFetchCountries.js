@@ -11,7 +11,7 @@ export const useFetchCountries = () => {
         dispatch({
           type: "SET_LOADING"
         })
-        const BASE_URL = "https://web-projects-fik1.onrender.com"
+        const BASE_URL = "https://rest-api-countries-v1.onrender.com";
         const url = name || region ? `${BASE_URL}/api/countries?name=${name}&region=${region}` :
                     `${BASE_URL}/api/countries`;
         const countries = await axios.get(url);
